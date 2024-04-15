@@ -1,0 +1,1498 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>清华大学</title><META Name="keywords" Content="清华大学" />
+
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/phone.css" media="screen and (max-width: 800px)">
+    <script type="text/javascript" src="script/jquery.min.js"></script>
+    <script src="script/set.js"></script>
+   <style>
+   .index-admissions .list dd{width:16%;}
+.index-flow .container .list{ height:4.8rem;}
+   @media screen and (max-width: 800px) {
+     .index-admissions .list dd {
+  width: 33.333%;
+  max-width: 33.333%;
+  padding-bottom: 0.4rem;}
+ }
+   </style>
+<!--Announced by Visual SiteBuilder 9-->
+<link rel="stylesheet" type="text/css" href="_sitegray/_sitegray_d.css" />
+<script language="javascript" src="_sitegray/_sitegray.js"></script>
+<!-- CustomerNO:77656262657232307e78475c5356574200000003435c -->
+<link rel="stylesheet" type="text/css" href="index.vsb.css" />
+<script type="text/javascript" src="/system/resource/js/counter.js"></script>
+<script type="text/javascript">_jsq_(1001,'/index.jsp',-1,1714694451)</script>
+</head>
+
+<body class="style-red">
+<Div></div>
+<div class="g-head">
+    <div class="wal">
+        <a href="index.htm" class="logo"></a>
+        <div class="btn-list">
+            <ul><script language="javascript" src="/system/resource/js/dynclicks.js"></script><script language="javascript" src="/system/resource/js/openlink.js"></script>
+<li><a href="fk.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1010)">访客</a></li>
+                
+
+<li><a href="http://www.tsinghua.org.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1011)">校友</a></li>
+                
+
+<li><a href="http://www.tuef.tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 74333)">捐赠</a></li>
+                
+
+<li><a href="http://jobs.tsinghua.edu.cn" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1012)">人才招聘</a></li>
+                
+
+<li><a href="http://info.tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1013)">内网</a></li>
+                
+
+<li><a href="https://mails.tsinghua.edu.cn" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1014)">邮箱</a></li>
+                
+
+<li><a href="http://www.lib.tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1015)">图书馆</a></li>
+                
+</ul>
+            <div class="language"><a class="name" href="https://www.tsinghua.edu.cn/en/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 71251)"> <i class="p-ico"></i><em> English</em></a>
+</div>
+            <div class="search"><script type="text/javascript">
+    function _nl_ys_check(){
+        
+        var keyword = document.getElementById('showkeycode1024').value;
+        if(keyword==null||keyword==""){
+            alert("请输入你要检索的内容！");
+            return false;
+        }
+        if(window.toFF==1)
+        {
+            document.getElementById("lucenenewssearchkey1024").value = Simplized(keyword );
+        }else
+        {
+            document.getElementById("lucenenewssearchkey1024").value = keyword;            
+        }
+        var  base64 = new Base64();
+        document.getElementById("lucenenewssearchkey1024").value = base64.encode(document.getElementById("lucenenewssearchkey1024").value);
+        new VsbFormFunc().disableAutoEnable(document.getElementById("showkeycode1024"));
+        return true;
+    } 
+</script>
+<form action="jsjg/jsjg.jsp?wbtreeid=1001" method="post" id="au2a" name="au2a" onsubmit="return _nl_ys_check()">
+ <input type="hidden" id="lucenenewssearchkey1024" name="lucenenewssearchkey" value=""><input type="hidden" id="_lucenesearchtype1024" name="_lucenesearchtype" value="1"><input type="hidden" id="searchScope1024" name="searchScope" value="0">
+<div class="input"><input name="showkeycode" id="showkeycode1024"></div>
+<div class="p-ico btn"><input type="submit" value=""></div>
+
+</form><script language="javascript" src="/system/resource/js/base64.js"></script><script language="javascript" src="/system/resource/js/formfunc.js"></script>
+</div>
+        </div>
+        <a href="javascript:;" class="navA"></a>
+        <div class="g-nav"><ul>
+    <li><a href="news.htm" title="清华新闻" class="name ">清华新闻</a>
+
+    </li>
+    <li><a href="xxgk.htm" title="学校概况" class="name "><em>学校概况</em></a>
+           <div class="list">
+            <dl>
+                <dd><a href="xxgk/xxyg.htm" title="学校沿革">学校沿革</a></dd>
+                <dd><a href="xxgk/lrld.htm" title="历任领导">历任领导</a></dd>
+                <dd><a href="xxgk/xrld.htm" title="现任领导">现任领导</a></dd>
+                <dd><a href="xxgk/zzjg.htm" title="组织机构">组织机构</a></dd>
+                <dd><a href="xxgk/tjzl.htm" title="统计资料">统计资料</a></dd>
+                <dd><a href="zjqh/xxgk1.htm" title="信息公开">信息公开</a></dd>
+            </dl>
+        </div>
+
+    </li>
+    <li><a href="yxsz.htm" title="院系设置" class="name ">院系设置</a>
+
+    </li>
+    <li><a href="jyjx.htm" title="教育教学" class="name "><em>教育教学</em></a>
+           <div class="list">
+            <dl>
+                <dd><a href="jyjx.htm#szmd" title="师资队伍">师资队伍</a></dd>
+                <dd><a href="jyjx/bksjy.htm" title="本科生教育">本科生教育</a></dd>
+                <dd><a href="jyjx/yjsjy.htm" title="研究生教育">研究生教育</a></dd>
+                <dd><a href="jyjx/zxjy.htm" title="在线教育">在线教育</a></dd>
+                <dd><a href="jyjx/zsjy.htm" title="终身教育">终身教育</a></dd>
+            </dl>
+        </div>
+
+    </li>
+    <li><a href="kxyj.htm" title="科学研究" class="name "><em>科学研究</em></a>
+           <div class="list">
+            <dl>
+                <dd><a href="kxyj/kyxm.htm" title="科研项目">科研项目</a></dd>
+                <dd><a href="kxyj/kyjg.htm" title="科研机构">科研机构</a></dd>
+                <dd><a href="kxyj/kyhz.htm" title="科研合作">科研合作</a></dd>
+                <dd><a href="kxyj/kycg.htm" title="科研成果">科研成果</a></dd>
+                <dd><a href="kxyj/jszy.htm" title="技术转移">技术转移</a></dd>
+                <dd><a href="kxyj/xsjl.htm" title="学术交流">学术交流</a></dd>
+            </dl>
+        </div>
+
+    </li>
+    <li><a href="zsjy.htm" title="招生就业" class="name ">招生就业</a>
+
+    </li>
+    <li><a href="hzjl.htm" title="合作交流" class="name "><em>合作交流</em></a>
+           <div class="list">
+            <dl>
+                <dd><a href="hzjl/gnhz.htm" title="国内合作">国内合作</a></dd>
+                <dd><a href="hzjl/gjhz.htm" title="国际合作">国际合作</a></dd>
+            </dl>
+        </div>
+
+    </li>
+    <li><a href="zjqh.htm" title="走进清华" class="name "><em>走进清华</em></a>
+           <div class="list">
+            <dl>
+                
+                <dd><a href="zjqh/xyshh/xshdd.htm" title="校园生活">校园生活</a></dd>
+                <dd><a href="zjqh/syxx.htm" title="实用信息">实用信息</a></dd>
+                <dd><a href="zjqh/xyfg.htm" title="校园风光">校园风光</a></dd>
+                <dd><a href="zjqh/qhwc.htm" title="清华文创">清华文创</a></dd>
+            </dl>
+        </div>
+
+    </li>
+</ul></div>
+    </div>
+</div>
+<div class="g-nav2">
+    <div class="scroll"><ul><!--1-->
+    <li><h2><a href="news.htm" title="清华新闻">清华新闻</a></h2>
+    </li>
+    <li><h2><a href="xxgk.htm" title="学校概况">学校概况</a></h2>
+           <div class="list">
+                <h3><a href="xxgk/xxyg.htm" title="学校沿革">学校沿革</a></h3>
+                <h3><a href="xxgk/lrld.htm" title="历任领导">历任领导</a></h3>
+                <h3><a href="xxgk/xrld.htm" title="现任领导">现任领导</a></h3>
+                <h3><a href="xxgk/zzjg.htm" title="组织机构">组织机构</a></h3>
+                <h3><a href="xxgk/tjzl.htm" title="统计资料">统计资料</a></h3>
+                <h3><a href="zjqh/xxgk1.htm" title="信息公开">信息公开</a></h3>
+           </div>
+    </li>
+    <li><h2><a href="yxsz.htm" title="院系设置">院系设置</a></h2>
+    </li>
+    <li><h2><a href="jyjx.htm" title="教育教学">教育教学</a></h2>
+           <div class="list">
+                <h3><a href="jyjx.htm#szmd" title="师资队伍">师资队伍</a></h3>
+                    <dl>
+                        <dd><a href="jyjx/szdw/gjzyjlhdz.htm" title="国际重要奖励获得者">国际重要奖励获得者</a></dd>
+                        <dd><a href="jyjx/szdw/lyys/zgkxyys.htm" title="两院院士">两院院士</a></dd>
+                    </dl>
+                <h3><a href="jyjx/bksjy.htm" title="本科生教育">本科生教育</a></h3>
+                    <dl>
+                        <dd><a href="jyjx/bksjy/bkzy.htm" title="本科专业">本科专业</a></dd>
+                        <dd><a href="jyjx/bksjy/jxms.htm" title="教学名师">教学名师</a></dd>
+                        <dd><a href="jyjx/bksjy/yzkc.htm" title="优质课程">优质课程</a></dd>
+                        <dd><a href="jyjx/bksjy/sjjx.htm" title="实践教学">实践教学</a></dd>
+                        <dd><a href="jyjx/bksjy/jxcg.htm" title="教学成果">教学成果</a></dd>
+                        <dd><a href="jyjx/bksjy/tsxm.htm" title="特色项目">特色项目</a></dd>
+                    </dl>
+                <h3><a href="jyjx/yjsjy.htm" title="研究生教育">研究生教育</a></h3>
+                    <dl>
+                        <dd><a href="jyjx/yjsjy/xsxwjy.htm" title="学术学位教育">学术学位教育</a></dd>
+                        <dd><a href="jyjx/yjsjy/zyxwjy.htm" title="专业学位教育">专业学位教育</a></dd>
+                        <dd><a href="jyjx/yjsjy/kcyjx.htm" title="课程与教学">课程与教学</a></dd>
+                        <dd><a href="jyjx/yjsjy/gjhpy.htm" title="国际化培养">国际化培养</a></dd>
+                        <dd><a href="jyjx/yjsjy/sqxk.htm" title="授权学科">授权学科</a></dd>
+                        <dd><a href="jyjx/yjsjy/xwsy.htm" title="学位授予">学位授予</a></dd>
+                        <dd><a href="jyjx/yjsjy/jztx.htm" title="奖助体系">奖助体系</a></dd>
+                        <dd><a href="jyjx/yjsjy/gcbsxm.htm" title="工程博士项目">工程博士项目</a></dd>
+                    </dl>
+                <h3><a href="jyjx/zxjy.htm" title="在线教育">在线教育</a></h3>
+                    <dl>
+                        <dd><a href="jyjx/zxjy/fzgk.htm" title="发展概况">发展概况</a></dd>
+                        <dd><a href="jyjx/zxjy/ptjs.htm" title="平台介绍">平台介绍</a></dd>
+                        <dd><a href="jyjx/zxjy/yzzxzy.htm" title="优质在线资源">优质在线资源</a></dd>
+                        <dd><a href="jyjx/zxjy/gjhz.htm" title="国际合作">国际合作</a></dd>
+                        <dd><a href="jyjx/zxjy/zxjyyj.htm" title="在线教育研究">在线教育研究</a></dd>
+                    </dl>
+                <h3><a href="jyjx/zsjy.htm" title="终身教育">终身教育</a></h3>
+                    <dl>
+                        <dd><a href="http://thtm.tsinghua.edu.cn/" target="_blank" title="课程项目">课程项目</a></dd>
+                        <dd><a href="jyjx/zsjy/jpxm.htm" title="精品项目">精品项目</a></dd>
+                        <dd><a href="jyjx/zsjy/jsjx.htm" title="教师进修">教师进修</a></dd>
+                        <dd><a href="jyjx/zsjy/jyfpyxczx.htm" title="教育扶贫与乡村振兴">教育扶贫与乡村振兴</a></dd>
+                    </dl>
+           </div>
+    </li>
+    <li><h2><a href="kxyj.htm" title="科学研究">科学研究</a></h2>
+           <div class="list">
+                <h3><a href="kxyj/kyxm.htm" title="科研项目">科研项目</a></h3>
+                    <dl>
+                        <dd><a href="kxyj/kyxm/kyxmgk.htm" title="科研项目概况">科研项目概况</a></dd>
+                        <dd><a href="kxyj/kyxm/xlzdxm.htm" title="新立重大项目">新立重大项目</a></dd>
+                        <dd><a href="kxyj/kyxm/zdtgxm.htm" title="重点推广项目">重点推广项目</a></dd>
+                    </dl>
+                <h3><a href="kxyj/kyjg.htm" title="科研机构">科研机构</a></h3>
+                    <dl>
+                        <dd><a href="kxyj/kyjg/zfpjjg.htm" title="政府批建机构">政府批建机构</a></dd>
+                        <dd><a href="kxyj/kyjg/zzsljg.htm" title="自主设立机构">自主设立机构</a></dd>
+                        <dd><a href="kxyj/kyjg/lhgjjg.htm" title="联合共建机构">联合共建机构</a></dd>
+                    </dl>
+                <h3><a href="kxyj/kyhz.htm" title="科研合作">科研合作</a></h3>
+                    <dl>
+                        <dd><a href="kxyj/kyhz/dfhz.htm" title="地方合作">地方合作</a></dd>
+                        <dd><a href="kxyj/kyhz/qyhz.htm" title="企业合作">企业合作</a></dd>
+                        <dd><a href="kxyj/kyhz/hwhz.htm" title="海外合作">海外合作</a></dd>
+                    </dl>
+                <h3><a href="kxyj/kycg.htm" title="科研成果">科研成果</a></h3>
+                    <dl>
+                        <dd><a href="kxyj/kycg/hjcg.htm" title="获奖成果">获奖成果</a></dd>
+                        <dd><a href="kxyj/kycg/lwzz.htm" title="论文著作">论文著作</a></dd>
+                    </dl>
+                <h3><a href="kxyj/jszy.htm" title="技术转移">技术转移</a></h3>
+                <h3><a href="kxyj/xsjl.htm" title="学术交流">学术交流</a></h3>
+                    <dl>
+                        <dd><a href="kxyj/xsjl/qhlt.htm" title="清华论坛">清华论坛</a></dd>
+                        <dd><a href="kxyj/xsjl/gjhy.htm" title="国际会议">国际会议</a></dd>
+                        <dd><a href="kxyj/xsjl/xsqk.htm" title="学术期刊">学术期刊</a></dd>
+                    </dl>
+           </div>
+    </li>
+    <li><h2><a href="zsjy.htm" title="招生就业">招生就业</a></h2>
+           <div class="list">
+                <h3><a href="http://join-tsinghua.edu.cn/" title="本科生招生">本科生招生</a></h3>
+                <h3><a href="http://yz.tsinghua.edu.cn/" title="研究生招生">研究生招生</a></h3>
+                <h3><a href="https://www.tsinghua.edu.cn/en/Admissions.htm" title="国际学生招生">国际学生招生</a></h3>
+                <h3><a href="http://career.tsinghua.edu.cn/" title="学生职业发展">学生职业发展</a></h3>
+           </div>
+    </li>
+    <li><h2><a href="hzjl.htm" title="合作交流">合作交流</a></h2>
+           <div class="list">
+                <h3><a href="hzjl/gnhz.htm" title="国内合作">国内合作</a></h3>
+                    <dl>
+                        <dd><a href="hzjl/gnhz/qmhz.htm" title="全面合作">全面合作</a></dd>
+                        <dd><a href="hzjl/gnhz/kyhz.htm" title="科研合作">科研合作</a></dd>
+                        <dd><a href="hzjl/gnhz/rcpyyjl.htm" title="人才培养与交流">人才培养与交流</a></dd>
+                        <dd><a href="hzjl/gnhz/zsjy.htm" title="终身教育">终身教育</a></dd>
+                        <dd><a href="hzjl/gnhz/zlzxyzk.htm" title="战略咨询与智库">战略咨询与智库</a></dd>
+                        <dd><a href="hzjl/gnhz/xdhzyjy.htm" title="校地合作研究院">校地合作研究院</a></dd>
+                        <dd><a href="hzjl/gnhz/dkzyyddbf.htm" title="对口支援与定点帮扶">对口支援与定点帮扶</a></dd>
+                    </dl>
+                <h3><a href="hzjl/gjhz.htm" title="国际合作">国际合作</a></h3>
+                    <dl>
+                        <dd><a href="hzjl/gjhz/qqzl1.htm" title="全球战略">全球战略</a></dd>
+                        <dd><a href="hzjl/gjhz/qqsrl1.htm" title="全球胜任力">全球胜任力</a></dd>
+                        <dd><a href="hzjl/gjhz/gjxsxz1.htm" title="国际学生学者">国际学生学者</a></dd>
+                        <dd><a href="hzjl/gjhz/gjxy.htm" title="国际校园">国际校园</a></dd>
+                        <dd><a href="kxyj/kyhz/hwhz.htm" title="海外科研合作">海外科研合作</a></dd>
+                        <dd><a href="hzjl/gjhz/sqxx.htm" title="暑期学校">暑期学校</a></dd>
+                        <dd><a href="hzjl/gjhz/qhgs.htm" title="清华共识">清华共识</a></dd>
+                    </dl>
+           </div>
+    </li>
+    <li><h2><a href="zjqh.htm" title="走进清华">走进清华</a></h2>
+           <div class="list">
+                
+                <h3><a href="zjqh/xyshh/xshdd.htm" title="校园生活">校园生活</a></h3>
+                    <dl>
+                        <dd><a href="zjqh/xyshh/xshdd.htm" title="学生活动">学生活动</a></dd>
+                        <dd><a href="zjqh/xyshh/jghd.htm" title="教工活动">教工活动</a></dd>
+                    </dl>
+                <h3><a href="zjqh/syxx.htm" title="实用信息">实用信息</a></h3>
+                    <dl>
+                        <dd><a href="zjqh/syxx/xyjt.htm" title="校园交通">校园交通</a></dd>
+                        <dd><a href="zjqh/syxx/zbjt.htm" title="周边交通">周边交通</a></dd>
+                        <dd><a href="zjqh/syxx/xycg.htm" title="校园参观">校园参观</a></dd>
+                        <dd><a href="zjqh/syxx/fwxx.htm" title="服务信息">服务信息</a></dd>
+                        <dd><a href="zjqh/syxx/xczy.htm" title="宣传资源">宣传资源</a></dd>
+                        <dd><a href="zjqh/syxx/qhxl.htm" title="清华校历">清华校历</a></dd>
+                    </dl>
+                <h3><a href="zjqh/xyfg.htm" title="校园风光">校园风光</a></h3>
+                    <dl>
+                        <dd><a href="zjqh/xyfg/xydt.htm" title="校园地图">校园地图</a></dd>
+                        <dd><a href="zjqh/xyfg/xyjg.htm" title="校园景观">校园景观</a></dd>
+                    </dl>
+                <h3><a href="zjqh/qhwc.htm" title="清华文创">清华文创</a></h3>
+           </div>
+    </li>
+</ul></div>
+</div>
+
+<div class="index-flash">
+
+
+
+
+
+<script language="javascript" src="/system/resource/js/centerCutImg.js"></script><script language="javascript" src="/system/resource/js/ajax.js"></script><ul>
+
+           <li>
+                                      
+                            <div class="img pc-show"><a href="https://mp.weixin.qq.com/s/_3kFRLzkdVoPQ4nAhk-gEg"><img src="/__local/7/B0/DD/C901EEDDDE9E10124507133D133_28025F82_51446.jpg" alt=""></a></div>
+                            <div class="img phone-show"><a href="https://mp.weixin.qq.com/s/_3kFRLzkdVoPQ4nAhk-gEg"><img src="/__local/9/35/2F/635A2DCE4636A65FC16D88A57EB_F168CEB4_19D89.jpg" alt="" onclick="_addDynClicks('wbnews','1714694451', 110727) "></a></div>
+           
+             <div class="name"><a href="https://mp.weixin.qq.com/s/_3kFRLzkdVoPQ4nAhk-gEg" title="清华大学113周年校庆系列活动抢先看！" onclick="_addDynClicks('wbnews','1714694451', 110727) ">清华大学113周年校庆系列活动抢先看！</a></div>
+        </li>
+
+
+           <li>
+                                      
+                            <div class="img pc-show"><a href="https://www.tsinghua.edu.cn/info/1177/110704.htm"><img src="/__local/2/E6/56/43ADC89CA03DD534D9F227F1FBF_B260CD1E_422B5.jpg" alt=""></a></div>
+                            <div class="img phone-show"><a href="https://www.tsinghua.edu.cn/info/1177/110704.htm"><img src="/__local/3/73/FF/72FE99E5E7A3E5C4D562EBEE242_210C40FA_18E73.jpg" alt="" onclick="_addDynClicks('wbnews','1714694451', 110709) "></a></div>
+           
+             <div class="name"><a href="https://www.tsinghua.edu.cn/info/1177/110704.htm" title="开新局 展新貌 奋力谱写高质量发展的清华篇章 | 清华大学113周年校庆献辞" onclick="_addDynClicks('wbnews','1714694451', 110709) ">开新局 展新貌 奋力谱写高质量发展的清华篇章 | 清华大学113周年校庆献辞</a></div>
+        </li>
+
+
+           <li>
+                                      
+                            <div class="img pc-show"><a href="info/3045/110677.htm"><img src="/__local/3/18/FC/F8341D58C74E32ED058A52F7785_466C96E9_670C8.jpg" alt=""></a></div>
+                            <div class="img phone-show"><a href="info/3045/110677.htm"><img src="/__local/2/A8/F6/503BB6E0A1B26761820EEDD06A9_99D8774E_1B2A5.jpg" alt=""></a></div>
+           
+             <div class="name"><a href="info/3045/110677.htm" title="继往开来，砥砺奋进，建设世界一流环境学科">继往开来，砥砺奋进，建设世界一流环境学科</a></div>
+        </li>
+
+</ul>
+    <div class="arrow">
+        <a class="prev"></a>
+        <a class="next"></a>
+    </div>
+    <div class="btn">
+        <div class="dots"></div>
+        <a href="qhyx/a2024.htm">更多 ></a>
+    </div><script>_showDynClickBatch(['dynclicks_u5_110727','dynclicks_u5_110709','dynclicks_u5_110677'],[110727,110709,110677],"wbnews", 1714694451)</script>
+</div>
+<script>
+    $(function () {
+
+        // ie hack
+        if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+            $('.index-flash li .img a img').each(function(){
+                var t = jQuery(this),
+                    s = 'url(' + t.attr('src') + ')',
+                    p = t.parent(),
+                    d = jQuery('<div></div>');
+
+                p.append(d);
+                d.css({
+                    'height'                : '100%',//t.parent().css('height')
+                    'background-size'       : 'cover',
+                    'background-repeat'     : 'no-repeat',
+                    'background-position'   : '50% 20%',
+                    'background-image'      : s
+                });
+                t.hide();
+            });
+
+            $('.index-flash li .img a video').each(function(){
+                var t = jQuery(this)
+                t.css({
+                    'left'      : '50%',
+                    'top'       : '50%',
+                    'width'     : 'auto',
+                    'height'    : 'auto',
+                    'min-height': '100%',
+                    'min-width' : '100%',
+                    'transform' : 'translate(-50%, -50%)',
+
+                });
+            });
+        }
+        // ie hack
+
+        var dom = $('.index-flash');
+        var swiper = new swiperFun({
+            dom: dom,
+            loop: false,
+            effect: 'fade'
+        });
+        dom.find('.prev').click(function () {
+            if (swiper.mySwiper.previousIndex === 0) {
+                swiper.mySwiper.slideTo(swiper.mySwiper.slides.length - 1)
+            }
+            return false
+        });
+        dom.find('.next').click(function () {
+            if (swiper.mySwiper.previousIndex === swiper.mySwiper.slides.length - 1) {
+                swiper.mySwiper.slideTo(0)
+            }
+            return false
+        });
+
+        var videos = [];
+        dom.find('li').each(function () {
+            videos.push($(this).find('video')[0] || false)
+        });
+        videos.forEach(function (item, i) {
+            item && item.addEventListener('ended', function () {
+                if (i === swiper.mySwiper.slides.length - 1) {
+                    swiper.mySwiper.slideTo(0);
+                } else {
+                    swiper.mySwiper.slideNext();
+                }
+                //swiper.mySwiper.startAutoplay()
+            })
+        });
+        swiper.change = function (i) {
+            change(i)
+        };
+        change(0);
+
+        function change(i) {
+            videos.forEach(function (item) {
+                if (item) {
+                    item.currentTime = 0;
+                    item.pause()
+                }
+            });
+            var video = videos[i];
+            if (video) {
+                swiper.mySwiper.stopAutoplay();
+                //video.playbackRate = 10;//测试用，视频太长了比较难等
+                video.play()
+            } else {
+                swiper.mySwiper.startAutoplay()
+            }
+        }
+
+
+
+
+    });
+
+</script>
+
+<div class="index-search-bg"></div>
+<div class="index-search">
+
+<script>
+    function checksearchu6()
+    {
+        var keyword = document.getElementById("showkeycode1016").value;
+        if(keyword==null||keyword=="")
+        {
+            alert("请输入你要检索的内容！");
+            return false;
+        }
+        if(window.toFF==1)
+        {
+            document.getElementById("newskeycode21016").value = Simplized(keyword );
+        }
+        else
+        {
+            document.getElementById("newskeycode21016").value = keyword;
+        }
+        document.getElementById('_lucenesearchtype1016').value=2;
+        var base64 = new Base64();
+        document.getElementById("newskeycode21016").value=base64.encode(document.getElementById("newskeycode21016").value);
+        return true; }
+</script>
+
+
+<div class="wal">
+
+    <div class="form">
+        <div class="input"><input type="text" class="inputbtn1" name="showkeycode" id="showkeycode1016" placeholder="快速探索 Tsinghua University"></div>
+        <div class="submit"><input type="submit" value="" class="inputbtn" id="sumite" onclick="jiansuo()"></div>
+    </div>
+    <div class="hot-words">
+        <div class="name">高频搜索内容</div>
+        <div class="p-ico"> ></div>
+        <ul>
+            <li><a href="http://www.join-tsinghua.edu.cn/" target="_blank">本科生招生</a></li>
+            <li><a href="https://yz.tsinghua.edu.cn" target="_blank">研究生招生</a></li>
+            <li><a href="http://2021.tsinghua.edu.cn/" target="_blank">110周年校庆</a></li>
+            <li><a href="http://www.jiandang100.tsinghua.edu.cn/" target="_blank">建党100周年</a></li>
+            <li><a href="https://www.tsinghua.edu.cn/kyzt/" target="_blank"></a></li>
+        </ul>
+    </div>
+
+    <form action="jsjg/jsjg.jsp?wbtreeid=1001" method="post" name="au6a" onsubmit="return checksearchu6()">
+        <input type="hidden" id="newskeycode21016" name="newskeycode2"><input type="hidden" id="_lucenesearchtype1016" name="_lucenesearchtype" value="2"><input type="hidden" id="lucenenewssearchkey1016" name="lucenenewssearchkey"><input type="hidden" name="wbtreeid" value="1001"><input type="hidden" name="range" id="range1016"><input type="hidden" name="order" id="order1016">
+        <div class="search-result">
+            <div class="list">
+                <div class="name">
+                    <h3>主页</h3>
+                    <a href="javascript:void(0);" onclick="findNews('zhu');">|  更多 ></a>
+                </div>
+                <ul id="zhu">
+                    <li><a href="">本科生招生<i></i></a></li>
+                    <li><a href="">研究生招生<i></i></a></li>
+                    <li><a href="">国际学生招生<i></i></a></li>
+                </ul>
+                <div class="name">
+                    <h3>清华新闻</h3>
+                    <a href="javascript:void(0);" onclick="findNews('news');">|  更多 ></a>
+                </div>
+                <ul id="news">
+                    <li><a href="">清华大学召开2020年度全校教学工作交流会<i></i></a></li>
+                    <li><a href="">清华大学完成2021年全国硕士研究生招生考试组织工作<i></i></a></li>
+                    <li><a href="">2021年全国硕士研究生招生考试清华考点顺利开考<i></i></a></li>
+                    <li><a href="">中国学位与研究生教育学会研究生职业发展教育委员会成立大会在清华大学举行<i></i></a></li>
+                </ul>
+                <div class="name">
+                    <h3>其他</h3>
+                    <a href="javascript:void(0);" onclick="findNews('other');">|  更多 ></a>
+                </div>
+                <ul id="others">
+                    <li><a href="">清华大学召开2020年度全校教学工作交流会<i></i></a></li>
+                    <li><a href="">清华大学完成2021年全国硕士研究生招生考试组织工作<i></i></a></li>
+                    <li><a href="">2021年全国硕士研究生招生考试清华考点顺利开考<i></i></a></li>
+                    <li><a href="">中国学位与研究生教育学会研究生职业发展教育委员会成立大会在清华大学举行<i></i></a></li>
+                </ul>
+            </div>
+            <div class="btn">
+                <a href="javascript:void(0);" onclick="findNews('more');">   查看更多结果 ></a>
+            </div>
+    </form>
+</div>
+</div>
+
+<script>
+
+
+    function findNews(nameflag) {
+
+        if(nameflag=='zhu') {
+            document.au6a.action = "jsjg/zz_jsjg.jsp?urltype=tree.TreeTempUrl&wbtreeid=2041";
+            checksearchu6();
+            document.au6a.submit();
+        }
+        if(nameflag=='news') {
+            document.au6a.action = "jsjg/xww_jsjg.jsp?urltype=tree.TreeTempUrl&wbtreeid=2042";
+            checksearchu6();
+            document.au6a.submit();
+        }
+        if(nameflag=='other') {
+            document.au6a.action = "jsjg/qita_jsjg.jsp?urltype=tree.TreeTempUrl&wbtreeid=2044";
+            checksearchu6();
+            document.au6a.submit();
+        }
+        if(nameflag=='more') {
+            document.au6a.action = "jsjg/jsjg.jsp?urltype=tree.TreeTempUrl&wbtreeid=2043";
+            checksearchu6();
+            document.au6a.submit();
+        }
+    }
+
+
+    function jiansuo() {
+        //var keyword = document.getElementById('showkeycode1016').value;
+        var keyword = new Base64().encode(document.getElementById('showkeycode1016').value);
+        $.ajax({
+            type:'post',
+            url:'/system/resource/jiansuo.jsp',
+            data:{"ownerName":"qh2021b","keywordfontcolor":"","currentnum":"1","pagenum":"4","newskeycode":keyword,"wbtreeidszhu":"1015,1014,1331,1332,1326,1328,1329,1330,1327,1010,1011,1338,1339,1333,1336,1335,1334,1337,2053,2056,2055,2054,2052,1167,1166,1156,1287,1286,1161,1158,1160,1159,1162,1296,1293,1640,1294,1295,1292,1643,1641,1644,1655,1658,1657,1654,1656,1636,1638,1639,1300,1163,1340,1171,1297,1264,1271,1269,1270,1265,1275,1273,1274,1272,1267,1283,1280,1284,1342,1281,1343,1266,1276,1279,1277,1278,1282,1168,1268,1151,1152,1285,1007,1635,2073,2102,2103,2110,2091,2093,2088,2111,2074,2137,2114,2115,2113,2080,2112,1028,1027,1026,1150,1023,1024,1249,1219,1142,1221,1220,1149,1218,1222,1144,1143,1217,1148,1624,1145,1289,1147,1226,1135,1234,1129,1233,1122,1231,1230,1232,1224,1228,1229,1118,1119,1120,1114,1116,1121,1241,1117,1108,1109,1242,1111,1113,1110,1245,1104,1244,1097,1246,1247,1107,1248,1099,1243,1100,1098,1092,1288,1095,1093,1094,1091,1088,1089,1090,1238,1236,1239,1237,1240,1235,1081,1080,1079,1216,1255,1204,1567,1566,1570,1568,1569,1565,1360,1359,1002,1370,1369,1368,1367,1366,1365,2116,1363,1017,1019,1018","wbtreeidsnews":"2935,2108,2061,2057,2059,2060,2062,2063,1660,1177,1175,2123,2127,2125,2126,2124,1662,1180,1661,1179,1181,1182,1173,1183,1176,1178,2070,1174,1902,1923,1916,1917,1788,1878,1769,1832,2001,1773,1681,1859,1941,1986,1795,1992,1756,1922,1791,1826,1880,1870,1905,1805,1684,1806,1929,1896,1983,1673,1835,1667,1850,1871,1897,1930,2024,1970,1910,1965,1988,2012,1815,1879,1991,1798,1728,1874,1771,1913,1938,1866,1705,1774,1864,1954,1768,1989,2004,1776,2028,1947,1977,1712,1829,1793,1863,1969,1780,1810,1953,1958,1672,1867,1978,1999,2016,2009,1877,2018,1848,1945,1837,1813,1921,1904,1875,1784,1789,2033,1822,1928,1853,1779,1894,1840,2032,2034,2031,1939,2035,1701,1743,1691,1710,1823,1730,1762,1735,1937,1811,1865,1754,1915,1957,1816,1719,1804,1734,1770,1790,1898,1731,1750,1764,1786,1693,1726,2026,1775,1732,1718,1808,1763,1692,1846,1868,1891,1942,1985,2002,2019,2030,1752,1707,1778,1803,1820,1737,1680,1963,1950,1895,1948,1887,1800,1855,1919,1888,1889,1819,1761,1818,1782,1869,1827,1839,1968,2014,1856,1841,1851,1801,1862,1844,2020,1748,1920,1723,1860,1975,1678,1709,1669,1949,1892,1830,1959,1765,2021,1740,2006,1935,1704,2023,1984,1881,1720,1736,1767,2010,1924,1683,1960,1998,1696,1697,1699,1714,1908,2022,1931,2013,1909,1689,1668,1834,1976,1967,2007,1831,1932,1890,1690,1687,1715,1686,1893,2000,1751,1972,1792,1809,1665,1940,1906,1755,1982,1883,1946,1733,1783,1725,1742,1836,2017,1824,1914,1685,1694,1971,1802,1980,2003,1821,1872,1876,1781,1933,1943,1674,2008,2015,1838,1724,1993,1797,1760,2005,1955,2036,1973,1990,1849,1741,1886,1907,1966,1817,1900,1747,1925,1974,1746,2029,1996,2025,1845,1666,1882,2027,1997,1706,1703,1739,1952,1951,1670,1807,1716,1987,1833,1721,1677,1903,1787,1758,1777,1944,1671,1682,1676,1679,1688,1675,1708,1700,1695,1711,1729,1727,1722,1717,1713,1749,1744,1745,1757,1759,1753,1772,1766,1785,1799,1794,1796,1814,1812,1828,1825,1842,1843,1858,1852,1854,1861,1857,1847,1884,1873,1885,1901,1899,1911,1926,1912,1936,1927,1956,1934,1961,1962,1964,1979,1981,1994,1995,2011,1918","ownerNameOther":"jdfwzx,qsznztw,qhdxyy,xlxxen,gatbgs,enven,iesen,thu109,kyzt,kyzten,psen,iren,sssen,sssnews,sme,xlxxx,gjgxx,zzxxx,jjxyjsx,shxxx,docinfo,gss,life,lifeen,joinen,auyqw,alumni,dwjsgzb,jszyyjy,wlx,wlxen,wdzs,hjxynews,rwxy,wwx,wwxen,xswyh,ee,eeen,wlwhztw,qhdxwzywz,jyx,jyxen,jyy,jyyen,kyy,bkszs,guofang,rwxyen,zwx,lsx,phil,xsg,hfy,mse,qzdj,yjsynews,sisten,bnrist,bnristen,me,meen,riit,riiten,mseen,cce,cceen,career,careeren,nyydl,chem,chemen,smarx,sce,vpnhelp,hy,hyen,sbc,law,lawen,ctwx,arts,xtjh,thsports,bme,icenter,icenteren,gjc,math,tsjc,tsjcen,inet,ineten,gyy,castu,castuen,zysjjd,zysjjden,chemeng,dangjian,tsinghuaen,teennew,isen,yskyz,jsjxnews,jsjxnenews,dwxcb,weiyangshuyuan,xingjianshuyuan,rixinshuyuan,zhilishuyuan,tanweishuyuan,ysfwzxn,tzbx,dqxxzhn,dqxxenn,xghx,wzbx,jwbgsx,xxhjszxx,qhdxdsb,qhdxdsbyw,zgfz,dwyjsgzb,xssqgl,xuncha,caiwu,xinxi,fawuban,xscx,xszx,dwzzbx,smsp,jjc,jwcx,dwbgs,sjcx,fzghc,ltxcx,twx,whjs,zwzbgs,rscx,jzb,cfd,lmzx,zsjy,hwxmb,zcglc,qhjden,zcyjy,gnhzc,yxynew,yxyennew,eeanwe,eeaennwe,yznew,qzsy,yzen,pbcsf,zdhxzy,sppm,philen,hfyen,chemengen,jyjjh,dagx,xyc,xycen,lce,lceen,zkzx,ep,epen,sppmen,jjgl,jjglen,gix,gixen,ie,ieen,thss,thssen,sps,spsen,kjx,kjxen,jjx,jjxen,jrx,jrxen,zlx,zlxen,zzx,zzxen,gkx,gkxen,yxx,yxxen,qctsxzx,qctsxzxen,civil,civilen,he,heen,cezh,ceen,cmzh,cmen,astro,astroen,qzcen,qhdxhswz,qhvi,tzh,nyzn,dwbwbb,lc,adnew,air,airen,nyznz,lmzxzh,xqwz,d26ctlh,cpfwzx,wlkxkjyjy,pbcsfen,wkggxynew,wkggxyennew,wxsy,zt20d,aden2022,sc,scen,wkjsc,jcdlenx,jyjjhyw,gjydqyjy,gjydqyjyyw,swyxjcyjy,zdhx_en,swyxjc_en,xzsy_ch,gjzygcsxy,aqkxxy,lcyxyzy","isorderbydate":"0","select":"asc","owner":"1714694451"},
+            cache:false,
+            async:false,
+            dataType:'json',
+
+            success:function(data){
+                var zhu = data[0];
+                var htmlzhu="";
+                if(zhu.length==0) {
+                    htmlzhu="<li>未搜索到内容，请尝试其他关键词</li>"
+                } else {
+                    for(var x=0;x<zhu.length;x++) {
+                        htmlzhu += "<li><a href=\""+zhu[x].url+"\">"+zhu[x].showTitle+"<i></i></a></li>";
+                    }
+                }
+                $("#zhu").html(htmlzhu)
+
+                var news = data[1];
+                var htmlnews="";
+                if(news.length==0) {
+                    htmlnews="<li>未搜索到内容，请尝试其他关键词</li>"
+                }else {
+                    for(var y=0;y<news.length;y++) {
+                        htmlnews +="<li><a href=\""+news[y].url+"\">"+news[y].showTitle+"<i></i></a></li>";
+                    }
+                }
+                $("#news").html(htmlnews)
+
+                var others = data[2];
+                var htmlothers="";
+                if(others.length==0) {
+                    htmlothers="<li>未搜索到内容，请尝试其他关键词</li>"
+                } else {
+                    for(var i=0;i<others.length;i++) {
+                        htmlothers +="<li><a href=\""+others[i].url+"\">"+others[i].showTitle+"<i></i></a></li>";
+                    }
+                }
+
+                $("#others").html(htmlothers)
+            }
+        });
+    }
+
+</script></div>
+<script>
+
+         $(".search-result a").click(function(){
+        $('.index-search .form .input input')[0].value='';
+        })
+    $(function () {
+        var search = $('.index-search'),
+            search_bg = $('.index-search-bg');
+        search.find('.inputbtn').click(function () {
+            search.addClass('on');
+            search_bg.show();
+            $('body,html').stop(true, true).animate({scrollTop: search.offset().top - search.find('.form').height() - $('.g-head').height()}, 300)
+        });
+         search.find('.inputbtn1').bind('keyup', function () {
+            if (event.keyCode === 13) {
+                search.addClass('on');
+                search_bg.show();
+                $('body,html').stop(true, true).animate({scrollTop: search.offset().top - search.find('.form').height() - $('.g-head').height()}, 300)
+                jiansuo()
+            }
+        });
+        search.find('.input input').click(function () {
+           
+                search.find('.form .name').hide()
+          
+        });
+        search.find('.input input').blur(function () {
+            if($(this).val() === ''){
+                search.find('.form .name').show()
+            }else{
+                search.find('.form .name').hide()
+            }
+        });
+        search_bg.click(function () {
+            search.removeClass('on');
+            search_bg.hide();
+        })
+
+    })
+</script>
+
+<div class="wal index-news">
+    <div class="col-1">
+
+
+
+
+
+
+
+<div class="title"><a href="news/mtqh.htm" target="_blank"><em>媒体清华</em><span>In the Media</span></a></div>
+<div class="list">
+    <ul>
+        <li>
+            <a href="info/1182/110713.htm" target="_blank" title="清华大学2024年自强计划招生启动，4月10日起报名">
+            <div class="img"><img src="image/weixintupian_20210412190357.jpg"></div>
+            <div class="name">清华大学2024年自强计划招生启动，4月10日起报名</div>
+            </a>
+        </li>
+                <li>
+            <a href="info/1182/110712.htm" target="_blank" title="清华交叉团队发布中国人工智能光芯片“太极”">
+            <div class="name">清华交叉团队发布中国人工智能光芯片“太极”</div>
+            </a>
+                </li>
+                <li>
+            <a href="info/1182/110711.htm" target="_blank" title="清华大学团队研制出AI光芯片“太极”">
+            <div class="name">清华大学团队研制出AI光芯片“太极”</div>
+            </a>
+                </li>
+                <li>
+            <a href="info/1182/110710.htm" target="_blank" title="清华大学团队研制出“智能光计算芯片”">
+            <div class="name">清华大学团队研制出“智能光计算芯片”</div>
+            </a>
+                </li>
+    </ul>
+</div><script>_showDynClickBatch(['dynclicks_u7_110713','dynclicks_u7_110712','dynclicks_u7_110711','dynclicks_u7_110710'],[110713,110712,110711,110710],"wbnews", 1714694451)</script>
+</div>
+    <div class="col-2">
+
+
+
+
+
+
+
+<div class="list">
+    <ul>
+        <li>
+        <div class="img"><a href="http://www.tsinghua.edu.cn/info/1177/110704.htm"><img src="/__local/5/9B/34/68D2CE117A9A477E113B646DF12_9C2B7B56_2829F.jpg" alt="" onclick="_addDynClicks('wbnews','1714694451', 110702) "></a></div>
+      <a href="news/ttxw.htm" target="_blank" onclick="_addDynClicks('wbnews','1714694451', 110702) ">  <div class="title"><em>头条新闻</em><span>Headlines</span></div></a>
+        <div class="name"><a href="http://www.tsinghua.edu.cn/info/1177/110704.htm" target="_blank" title="开新局 展新貌 奋力谱写高质量发展的清华篇章 | 清华大学113周年校庆献辞" onclick="_addDynClicks('wbnews','1714694451', 110702) ">开新局 展新貌 奋力谱写高质量发展的清华篇章 | 清华大学113周年校庆献辞</a></div>
+        <p>在这天朗气清、惠风和畅的四月，清华大学即将迎来113岁生日。我们谨代表学校向海内外广大校友和全体师生员工致以亲切的问候和良好的祝愿，向多年来关心支持我校发展的各界人士和朋友表示衷心的感谢！校庆是清华人共同的节日，母校永远是校友们温暖的家。在这春意熙熙、其乐融融的美好时刻，欢迎广大校友回家！</p>
+    </li>
+    <li>
+        <div class="img"><a href="http://www.tsinghua.edu.cn/info/1177/110688.htm"><img src="/__local/F/D7/39/1D12C523AB50B984D3F24FD69C7_041813BD_63F218.jpg" alt="" onclick="_addDynClicks('wbnews','1714694451', 110697) "></a></div>
+      <a href="news/ttxw.htm" target="_blank" onclick="_addDynClicks('wbnews','1714694451', 110697) ">  <div class="title"><em>头条新闻</em><span>Headlines</span></div></a>
+        <div class="name"><a href="http://www.tsinghua.edu.cn/info/1177/110688.htm" target="_blank" title="清华大学召开2024年校机关教职工大会暨校机关作风建设年启动会" onclick="_addDynClicks('wbnews','1714694451', 110697) ">清华大学召开2024年校机关教职工大会暨校机关作风建设年启动会</a></div>
+        <p>4月8日下午，清华大学在新清华学堂召开2024年校机关教职工大会，集体学习领会习近平总书记关于作风建设的重要讲话精神，扎实落实《清华大学全面贯彻落实党的二十大精神行动方案》推进作风建设常态化长效化专项行动，启动部署校机关作风建设年活动。校党委书记邱勇作题为“坚持走在前、作表率，以‘实’的要求、‘严’的...</p>
+    </li>
+    <li>
+        <div class="img"><a href="http://www.tsinghua.edu.cn/info/1176/110229.htm"><img src="/__local/0/1C/3D/799827CC96F0C90428DF2C2CFBB_10F58CB1_48E83.jpg" alt="" onclick="_addDynClicks('wbnews','1714694451', 110227) "></a></div>
+      <a href="news/ttxw.htm" target="_blank" onclick="_addDynClicks('wbnews','1714694451', 110227) ">  <div class="title"><em>头条新闻</em><span>Headlines</span></div></a>
+        <div class="name"><a href="http://www.tsinghua.edu.cn/info/1176/110229.htm" target="_blank" title="五周年，这是，清华答卷" onclick="_addDynClicks('wbnews','1714694451', 110227) ">五周年，这是，清华答卷</a></div>
+        <p>开好思政课，是时代赋予教育工作者的光荣责任。五年来，清华大学加强党的领导，以钉钉子精神严格落实“八个相统一”和“六要”要求，坚持全校“一盘棋”，建设“大课堂”、搭建“大平台”、汇聚“大师资”，推进思政课课程体系的一体化建设，交上了一份颇具特色的清华思政育人答卷。</p>
+    </li>
+    </ul>
+</div>
+<div class="arrow">
+    <a href="" class="prev"></a>
+    <div class="dots"></div>
+    <a href="" class="next"></a>
+</div><script>_showDynClickBatch(['dynclicks_u8_110702','dynclicks_u8_110697','dynclicks_u8_110227'],[110702,110697,110227],"wbnews", 1714694451)</script>
+</div>
+    <div class="col-1">
+
+
+
+
+
+
+
+<div class="title"><a href="news/zttj.htm" target="_blank"><em>专题推荐</em><span>Highlights</span></a> </div>
+<div class="list">
+    <ul>
+        <li>
+            <a href="news/zttj/srxxgcxjpzsjzyjhjs.htm" target="_blank" title="深入学习贯彻习近平总书记重要讲话精神" onclick="_addDynClicks('wbnews','1714694451', 83102) ">
+            <div class="img"><img src="/__local/4/4C/3D/FA56A99D6D60D3F731579BDF7D7_9CB46D6C_F93F.jpg"></div>
+            <div class="name">深入学习贯彻习近平总书记重要讲话精神</div>
+            </a>
+        </li>
+                <li>
+            <a href="news/zttj/zstjqhdxqmgclsddesdjsxdfa.htm" target="_blank" title="扎实推进《清华大学全面贯彻落实党的二十大精神行动方案》" onclick="_addDynClicks('wbnews','1714694451', 98703) ">
+            <div class="name">扎实推进《清华大学全面贯彻落实党的二十大精神行动方案》</div>
+            </a>
+                </li>
+                <li>
+            <a href="news/zttj/qzqhdxjx113zn.htm" target="_blank" title="庆祝清华大学建校113周年" onclick="_addDynClicks('wbnews','1714694451', 110724) ">
+            <div class="name">庆祝清华大学建校113周年</div>
+            </a>
+                </li>
+                <li>
+            <a href="news/zttj/dgzqzdqhr.htm" target="_blank" title="大国重器中的清华人" onclick="_addDynClicks('wbnews','1714694451', 107293) ">
+            <div class="name">大国重器中的清华人</div>
+            </a>
+                </li>
+    </ul>
+</div><script>_showDynClickBatch(['dynclicks_u9_83102','dynclicks_u9_98703','dynclicks_u9_110724','dynclicks_u9_107293'],[83102,98703,110724,107293],"wbnews", 1714694451)</script>
+</div>
+     
+</div>
+<script>
+    $(function () {
+        new swiperFun({
+            dom: $('.index-news .col-2'),
+            domList: '.list'
+        })
+    })
+</script>
+
+<div class="index-events">
+    <div class="wal">    <div class="title">
+        <div>events</div>
+        <h2>校园看点</h2>
+    </div>
+    <p>大师讲座、学术论坛、文体活动、演出展览…… 清华365天精彩活动，邀您共见。</p>
+    <div class="more"><a href="xykd.htm" class="p-more">查看更多</a></div>
+<div class="arrow">
+    <a href="" class="prev"></a>
+    <a href="" class="next"></a>
+</div></div>
+    <div class="list">
+
+
+
+
+
+
+
+    <div class="list-wrapper">
+    <ul>  
+              
+        <li>
+            <div class="name"><a href="info/1002/110624.htm">展览</a></div>
+            <div class="img"><a href="info/1002/110624.htm"><img src="/__local/4/5B/9B/3768722BF42C8BEDAE1D7C00402_8D31C3B2_4AF93.jpg"></a></div>
+            <div class="name2"><a href="info/1002/110624.htm" target="_blank" title="海外奇器——晚清士人眼中的西方科技世界">海外奇器——晚清士人眼中的西方科技世界</a></div>
+            <dl class="info">
+                <dd><em></em>周三至周日开放，周一、周二闭馆</dd>
+                <dd><em></em>清华大学科学博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/110620.htm">读书活动</a></div>
+            <div class="img"><a href="info/1002/110620.htm"><img src="/__local/5/D9/3F/D055811E4310A8C21C667E2882B_D84BAE6A_54B48.jpg"></a></div>
+            <div class="name2"><a href="info/1002/110620.htm" target="_blank" title="学在清华·真人图书馆60期：向美而行——美是一种生活态度">学在清华·真人图书馆60期：向美而行——美是一种生活态度</a></div>
+            <dl class="info">
+                <dd><em></em>2024年4月11日 15:30</dd>
+                <dd><em></em>清华大学图书馆北馆邺架轩/在线直播</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/110326.htm">展览</a></div>
+            <div class="img"><a href="info/1002/110326.htm"><img src="/__local/B/9F/BC/2EE5C1E9DDEF57F540D7A62D66F_2C411A78_76D57.jpg"></a></div>
+            <div class="name2"><a href="info/1002/110326.htm" target="_blank" title="抟埴之工：古代东西文明交流中的陶瓷艺术">抟埴之工：古代东西文明交流中的陶瓷艺术</a></div>
+            <dl class="info">
+                <dd><em></em>2024年3月22日-2024年7月31日</dd>
+                <dd><em></em>清华大学艺术博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/110113.htm">展览</a></div>
+            <div class="img"><a href="info/1002/110113.htm"><img src="/__local/2/40/5E/C0C5BE7A101819134296A204237_6D5D66C5_5F1A1.jpg"></a></div>
+            <div class="name2"><a href="info/1002/110113.htm" target="_blank" title="有窗户的画室：潘玉良、周思聪、肖惠祥艺术作品展">有窗户的画室：潘玉良、周思聪、肖惠祥艺术作品展</a></div>
+            <dl class="info">
+                <dd><em></em>2024年3月8日 - 2024年5月5日</dd>
+                <dd><em></em>清华大学艺术博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/110112.htm">读书活动</a></div>
+            <div class="img"><a href="info/1002/110112.htm"><img src="/__local/6/A7/92/1639CF639365641EABF2717CDAD_02BB5462_12E1B.jpg"></a></div>
+            <div class="name2"><a href="info/1002/110112.htm" target="_blank" title="邺架轩读书沙龙第42期：孝经正义">邺架轩读书沙龙第42期：孝经正义</a></div>
+            <dl class="info">
+                <dd><em></em>2024年3月18日 15:00</dd>
+                <dd><em></em>邺架轩阅读体验书店/在线直播</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/109917.htm">舞蹈剧场</a></div>
+            <div class="img"><a href="info/1002/109917.htm"><img src="/__local/2/BD/23/545DA7B0CAAB2A3A30EC517B310_1FAA59F3_231A8.jpg"></a></div>
+            <div class="name2"><a href="info/1002/109917.htm" target="_blank" title="“如”你我所念 似你我所“见”——舞蹈剧场《如见》">“如”你我所念 似你我所“见”——舞蹈剧场《如见》</a></div>
+            <dl class="info">
+                <dd><em></em>2024年3月22日/23日 19:30</dd>
+                <dd><em></em>清华大学新清华学堂</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/109812.htm">音乐会</a></div>
+            <div class="img"><a href="info/1002/109812.htm"><img src="/__local/6/F6/16/D078A82EA2B0CA2EBDC09021103_CA85AA42_21586.jpg"></a></div>
+            <div class="name2"><a href="info/1002/109812.htm" target="_blank" title="海上钢琴师 ——向经典电影致敬主题视听音乐会">海上钢琴师 ——向经典电影致敬主题视听音乐会</a></div>
+            <dl class="info">
+                <dd><em></em>2024年3月15日 19:30</dd>
+                <dd><em></em>清华大学新清华学堂</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/109486.htm">展览</a></div>
+            <div class="img"><a href="info/1002/109486.htm"><img src="/__local/2/CC/1B/1DEE146D3C483B8D447B8667EFB_4EDCF503_3217D.jpg"></a></div>
+            <div class="name2"><a href="info/1002/109486.htm" target="_blank" title="明灯 —— 从威廉·莫里斯到麦金托什">明灯 —— 从威廉·莫里斯到麦金托什</a></div>
+            <dl class="info">
+                <dd><em></em>2024年2月1日 - 2024年5月26日</dd>
+                <dd><em></em>清华大学艺术博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/109289.htm">学术活动</a></div>
+            <div class="img"><a href="info/1002/109289.htm"><img src="/__local/6/0E/1D/EF820C290292992DD20F7D542A0_6E4A17FA_4900D.jpg"></a></div>
+            <div class="name2"><a href="info/1002/109289.htm" target="_blank" title="清华五道口云课堂：如何打通科技成果转化的“最后一公里”？">清华五道口云课堂：如何打通科技成果转化的“最后一公里”？</a></div>
+            <dl class="info">
+                <dd><em></em>2024年1月13日 10:00</dd>
+                <dd><em></em>在线直播</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/107203.htm">展览</a></div>
+            <div class="img"><a href="info/1002/107203.htm"><img src="/__local/C/92/1C/D4127A8AD12AB291D812187A04D_0F20C926_7924A.jpg"></a></div>
+            <div class="name2"><a href="info/1002/107203.htm" target="_blank" title="禮运东方：山东古代文明精粹">禮运东方：山东古代文明精粹</a></div>
+            <dl class="info">
+                <dd><em></em>2023年10月18日-2024年2月18日</dd>
+                <dd><em></em>清华大学艺术博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/108962.htm">学术活动</a></div>
+            <div class="img"><a href="info/1002/108962.htm"><img src="/__local/1/01/63/1A5AEE15A87AB00A268BA0BEA91_433E37EA_7C233.jpg"></a></div>
+            <div class="name2"><a href="info/1002/108962.htm" target="_blank" title="人文清华讲坛：一个村超与千万村镇">人文清华讲坛：一个村超与千万村镇</a></div>
+            <dl class="info">
+                <dd><em></em>2023年12月25日 19:00</dd>
+                <dd><em></em>清华大学新清华学堂、在线直播</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/108316.htm">话剧</a></div>
+            <div class="img"><a href="info/1002/108316.htm"><img src="/__local/6/B1/AC/A9F69FB45D4400A53A571C33D62_E34D2C4C_DE24EE.jpg"></a></div>
+            <div class="name2"><a href="info/1002/108316.htm" target="_blank" title="清华首届哲学 - 戏剧节特邀剧目《浮士德》">清华首届哲学 - 戏剧节特邀剧目《浮士德》</a></div>
+            <dl class="info">
+                <dd><em></em>2023年12月9日/10日 19:00</dd>
+                <dd><em></em>清华大学新清华学堂</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/108341.htm">读书活动</a></div>
+            <div class="img"><a href="info/1002/108341.htm"><img src="/__local/7/DD/0E/F5896154F65E20A6DD49ABF60A0_EA006A9A_717A6.jpg"></a></div>
+            <div class="name2"><a href="info/1002/108341.htm" target="_blank" title="一本“无人读过的书”——吴国盛导读哥白尼著作《天球运行论》">一本“无人读过的书”——吴国盛导读哥白尼著作《天球运行论》</a></div>
+            <dl class="info">
+                <dd><em></em>2023年12月2日 20:00</dd>
+                <dd><em></em>在线直播</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/108318.htm">展览</a></div>
+            <div class="img"><a href="info/1002/108318.htm"><img src="/__local/D/DC/7C/C86B4EDBE41B97F7CABF702ECFC_9B1DA964_31B08.jpg"></a></div>
+            <div class="name2"><a href="info/1002/108318.htm" target="_blank" title="中国新民：梁启超诞辰150周年纪念展">中国新民：梁启超诞辰150周年纪念展</a></div>
+            <dl class="info">
+                <dd><em></em>2023年11月23日-2024年1月14日</dd>
+                <dd><em></em>清华大学艺术博物馆</dd>
+            </dl>
+        </li>   
+    <li>
+            <div class="name"><a href="info/1002/108262.htm">读书活动</a></div>
+            <div class="img"><a href="info/1002/108262.htm"><img src="/__local/1/5C/D9/4346586D53B675BADE2529FCECE_6AEC2B15_85246.jpg"></a></div>
+            <div class="name2"><a href="info/1002/108262.htm" target="_blank" title="学在清华·真人图书馆59期：从“君子和而不同”谈科学创新">学在清华·真人图书馆59期：从“君子和而不同”谈科学创新</a></div>
+            <dl class="info">
+                <dd><em></em>2023年12月1日 15:00</dd>
+                <dd><em></em>清华大学邺架轩/在线直播</dd>
+            </dl>
+        </li>   
+    </ul>
+</div><script>_showDynClickBatch(['dynclicks_u11_110624','dynclicks_u11_110620','dynclicks_u11_110326','dynclicks_u11_110113','dynclicks_u11_110112','dynclicks_u11_109917','dynclicks_u11_109812','dynclicks_u11_109486','dynclicks_u11_109289','dynclicks_u11_107203','dynclicks_u11_108962','dynclicks_u11_108316','dynclicks_u11_108341','dynclicks_u11_108318','dynclicks_u11_108262'],[110624,110620,110326,110113,110112,109917,109812,109486,109289,107203,108962,108316,108341,108318,108262],"wbnews", 1714694451)</script>
+</div>
+</div>
+<script>
+    $(function () {
+        var dom = $('.index-events'),
+            data = [];
+        dom.find('li').each(function () {
+            data.push($(this).html())
+        });
+        dom.find('ul').html("");
+        var _data = arrayOne2Two(data, 3);
+        if($(window).width() < 800){
+            _data = arrayOne2Two(data, 1)
+        }
+        var html = '';
+        _data.forEach(function (item) {
+            html += '<li><dl class="ul-dl">';
+            item.forEach(function (_item) {
+                html += '<dd class="li-dd">' + _item + '</dd>'
+            });
+            html += '</dl></li>'
+        });
+        dom.find('ul').html(html);
+
+        new swiperFun({
+            dom: dom,
+            domList: '.list-wrapper',
+            autoplay:false,
+            slidesPerView: 3,
+            centeredSlides: true
+        })
+    })
+</script>
+
+<div class="index-research">
+
+
+
+
+
+
+
+<div class="wal">
+    <div class="title">
+        <div>research</div>
+        <h2>学术科研</h2>
+    </div>
+    <div class="content">清华始终坚持面向世界科技前沿和国家重大战略需要，坚定地走中国特色自主创新之路。百年创新，硕果累累，清华师生在科技进步和学术发展中填补了一个又一个空白，刷新着一项又一项纪录，作出了重要的思想、理论和知识贡献。
+    </div>
+
+    <div class="list">
+        <ul>    
+                <li>
+            <div class="img"><a href="info/1175/110635.htm"><img src="/__local/B/FD/FE/98934B4F1AE810AFD53F18A14BC_4A243730_1398EA.png" alt=""></a></div>
+            <a class="name" href="info/1175/110635.htm" target="_blank" title="化学系王朝课题组开发出具有超大可逆双轴面应变的超弹性水凝胶">化学系王朝课题组开发出具有超大可逆双轴面应变的超弹性水凝胶</a>
+        </li>
+        <li>
+            <div class="img"><a href="info/1175/110628.htm"><img src="/__local/2/8B/79/1DC072D73BADF499D85CFE9A753_8200735E_1282EF.png" alt=""></a></div>
+            <a class="name" href="info/1175/110628.htm" target="_blank" title="环境学院郝吉明和蒋靖坤团队建立使用天然离子荷电测量大气颗粒物粒径谱的观测网络">环境学院郝吉明和蒋靖坤团队建立使用天然离子荷电测量大气颗粒物粒径谱的观测网络</a>
+        </li>
+        <li>
+            <div class="img"><a href="info/1175/110618.htm"><img src="/__local/7/7A/A3/716DACE13CC7B6B3D002A334806_8DD8B321_14744E.png" alt=""></a></div>
+            <a class="name" href="info/1175/110618.htm" target="_blank" title="生命学院李丕龙课题组开发基于相变设计的双特异性融合蛋白用于条件性肿瘤杀伤">生命学院李丕龙课题组开发基于相变设计的双特异性融合蛋白用于条件性肿瘤杀伤</a>
+        </li>
+        <li>
+            <div class="img"><a href="info/1175/110586.htm"><img src="/__local/C/7A/F5/451783DFF3FE42E31E3228137C8_FB235570_FA3CB.png" alt=""></a></div>
+            <a class="name" href="info/1175/110586.htm" target="_blank" title="清华长庚闫军团队与天津大学常津、康君团队合作研发超声介导肿瘤治疗新策略">清华长庚闫军团队与天津大学常津、康君团队合作研发超声介导肿瘤治疗新策略</a>
+        </li>
+        <li>
+            <div class="img"><a href="info/1175/110491.htm"><img src="/__local/D/B3/46/BF692284A4902986DF57D7B7814_C61EF804_CE983.png" alt=""></a></div>
+            <a class="name" href="info/1175/110491.htm" target="_blank" title="电子系方璐团队首创智能光计算终身学习架构">电子系方璐团队首创智能光计算终身学习架构</a>
+        </li>
+        </ul>
+    </div>
+    <div class="dots"></div>
+</div>
+<div class="big-img">
+    <a href="info/1175/110635.htm" style="background-image: url(/__local/B/FD/FE/98934B4F1AE810AFD53F18A14BC_4A243730_1398EA.png)"></a>
+    <a href="info/1175/110628.htm" style="background-image: url(/__local/2/8B/79/1DC072D73BADF499D85CFE9A753_8200735E_1282EF.png)"></a>
+    <a href="info/1175/110618.htm" style="background-image: url(/__local/7/7A/A3/716DACE13CC7B6B3D002A334806_8DD8B321_14744E.png)"></a>
+    <a href="info/1175/110586.htm" style="background-image: url(/__local/C/7A/F5/451783DFF3FE42E31E3228137C8_FB235570_FA3CB.png)"></a>
+    <a href="info/1175/110491.htm" style="background-image: url(/__local/D/B3/46/BF692284A4902986DF57D7B7814_C61EF804_CE983.png)"></a>
+</div><script>_showDynClickBatch(['dynclicks_u12_110635','dynclicks_u12_110628','dynclicks_u12_110618','dynclicks_u12_110586','dynclicks_u12_110491'],[110635,110628,110618,110586,110491],"wbnews", 1714694451)</script>
+</div>
+<script>
+
+    $(function () {
+        var  dom = $('.index-research'),
+            list = dom.find('.list');
+        if($(window).width() > 800){
+            list.find('li').each(function (i) {
+                $(this).hover(
+                    function () {
+                        change(i)
+                    },
+                    function () {
+
+                    }
+                )
+            });
+            change(0);
+            function change(i) {
+                dom.find('.big-img a').hide();
+                dom.find('.big-img a').eq(i).fadeIn(100);
+                list.find('li').removeClass('on');
+                list.find('li').eq(i).addClass('on')
+            }
+        }else if($(window).width() < 800){
+            new swiperFun({
+                dom: dom,
+                domList: '.list'
+            })
+        }
+    })
+</script>
+
+
+<div class="wal index-admissions"><div class="title">
+        <div>admissions</div>
+        <h2>入读清华</h2>
+    </div>
+    <div class="content">
+          32年前，我怀着人生梦想来到清华，从此就一直浸润在这个美丽而充满生机的园子里。今天，你们像当年的我一样，怀揣梦想、憧憬未来。如果你们要问我:“大学有多大？”我会告诉你们，“清华足够大，就看你的梦想有多大。”——清华大学党委书记 邱勇
+    </div>
+    <div class="list">
+        <ul style="z-index:10;">
+
+
+
+
+
+
+
+<li>
+                <div class="ico"><img src="/__local/5/AA/06/1357002B58F0821C058194E4830_5D5C9882_1FDA.png" alt=""></div>
+               <div class="info"><b>59</b><em>个</em></div><p>学院 22个；系 59个</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/E/E2/0D/0D9988E43259D7BA8C62387A3B0_944008B4_1CCB.png" alt=""></div>
+               <div class="info"><b>91</b><em>个</em></div><p>本科专业 91个，开放辅修学位专业 41个</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/D/78/37/065F932201AA938D1AB6420141B_048C173F_1C0B.png" alt=""></div>
+               <div class="info"><b>3831</b><em>人</em></div><p>教师人数</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/1/9C/84/E11E9E6ADB0392B44639F7026FC_3A244C92_204E.png" alt=""></div>
+               <div class="info"><b>60919</b><em>人</em></div><p>在学学生人数60919（本科生16291 硕士生22657 博士生21971）</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/9/77/49/EEA7D2DDDC6852EBFC376EADBDA_352FD690_1AEB.png" alt=""></div>
+               <div class="info"><b>265</b><em>家</em></div><p>在册学生社团265家</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/9/13/E5/1741498826C785DAFC9AEB91848_586103BE_2227.png" alt=""></div>
+               <div class="info"><b>68</b><em>支</em></div><p>学生体育代表队共57支队伍</p><p>学生艺术团共11支队伍</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/4/B8/15/53458535BEF09D34E903A3B0F32_CEC178EF_1561.png" alt=""></div>
+               <div class="info"><b>480</b><em>门</em></div><p>开设近480门在线课程</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/3/25/9D/E58F961912D855ACFF13E478A61_7BE4E9DB_1657.png" alt=""></div>
+               <div class="info"><b>669</b><em>项</em></div><p>2023年获批国家自然科学基金各类项目669项</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/C/94/E2/51A5761D33A52602A981FD4D5D9_61A824FD_14D9.png" alt=""></div>
+               <div class="info"><b>482.84</b> <em>公顷</em></div><p>校园面积(不含深圳国际研究生院、附属医院)</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/7/85/92/BFEFAB3F69480D9FC442320EA58_E9346695_1471.png" alt=""></div>
+               <div class="info"><b>25175</b><em>个</em></div><p>全校公共教室355间，座位数25175个</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/7/1A/BE/D054D867AE9682BD2B0F5BAA0E7_405FAFAF_19EC.png" alt=""></div>
+               <div class="info"><b>585.50</b><em>万册/件</em></div><p>图书馆馆藏总量</p>
+            </li>
+            
+<li>
+                <div class="ico"><img src="/__local/B/BB/90/40DE2D0976D87A43DAFC29D9F0F_B7F73938_168F.png" alt=""></div>
+               <div class="info"><b>25177</b><em>件</em></div><p>艺术博物馆藏品</p>
+            </li>
+            
+<script>_showDynClickBatch(['dynclicks_u13_93601','dynclicks_u13_101292','dynclicks_u13_101293','dynclicks_u13_101296','dynclicks_u13_93608','dynclicks_u13_93609','dynclicks_u13_93610','dynclicks_u13_93611','dynclicks_u13_101302','dynclicks_u13_93613','dynclicks_u13_101304','dynclicks_u13_93615'],[93601,101292,101293,101296,93608,93609,93610,93611,101302,93613,101304,93615],"wbnews", 1714694451)</script>
+</ul>
+        <div class="dots"></div>
+    </div></div>
+<script>
+    $(function () {
+        var dom = $('.index-admissions'),
+            data = [];
+        dom.find('li').each(function () {
+            data.push($(this).html())
+        });
+        dom.find('ul').html("");
+        var _data = arrayOne2Two(data, 6);
+        if($(window).width() < 800){
+            _data = arrayOne2Two(data, 3)
+        }
+        var html = '';
+        _data.forEach(function (item) {
+            html += '<li><dl>';
+            item.forEach(function (_item) {
+                html += '<dd>' + _item + '</dd>'
+            });
+            html += '</dl></li>'
+        });
+        dom.find('ul').html(html);
+
+        new swiperFun({
+            dom: dom,
+            domList: '.list'
+        })
+    })
+</script>
+
+
+
+
+
+<div class="index-flow">
+    <div class="wal">
+        <div class="container">
+            <div class="list">    <ul>
+    <li><a href="https://www.join-tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1016)">本科生招生<i></i></a></li>
+    
+    <li><a href="https://yz.tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1017)">研究生招生<i></i></a></li>
+    
+    <li><a href="https://www.tsinghua.edu.cn/en/Admissions.htm" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1018)">国际学生招生<i></i></a></li>
+        </ul>
+    <ul>
+    <li><a href="jyjx/zxjy.htm" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1020)">在线教育<i></i></a></li>
+    
+    <li><a href="jyjx/zsjy.htm" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1021)">终身教育<i></i></a></li>
+        </ul>
+</div>
+            <div class="video">
+
+
+
+
+
+
+
+ <Div class="spp">  <video poster="" autoplay="autoplay" loop="loop" controls="controls" muted="muted" preload="metadata" style="width:100%;display: block;">
+                                <source src="https://v.cic.tsinghua.edu.cn/vod/video/0/a/508393.mp4" type="video/mp4">
+                   
+                            </video></div>
+ <Div class="tpp" style="display:none;"><img src="" style="width:100%;"></div>
+
+ <script>
+ $(function () {
+{
+ if ($(window).width() < 800) {
+            var elem1 = document.getElementsByClassName('spp');
+            elem1[0].parentNode.removeChild(elem1[0]);
+            $('.tpp').css('display','block');
+        }
+    }
+});
+    </script><script>_showDynClickBatch(['dynclicks_u15_104304'],[104304],"wbnews", 1714694451)</script>
+</div>
+        </div>
+        <div class="title">
+            <div>FOLLOW US @SOCIAL MEDIA</div>
+            <h2>关注社交媒体上的我们</h2>
+            <a href="sjmt.htm" class="more">查看更多</a>
+            <dl>
+            <p>    <dd><a href="javascript:"><img src="image/img56_3.png" alt=""></a>
+<div class="layer">
+<div class="ewm">
+    <div class="img"><img src="image/gfksewm.png" alt=""></div>
+    <div class="name">清华大学快手号</div>
+</div>
+</div>
+</dd>
+<dd><a href="javascript:"><img src="image/img56_4.png" alt=""></a>
+<div class="layer">
+<div class="ewm">
+    <div class="img"><img src="image/gfdyewm.png" alt=""></div>
+    <div class="name">清华大学抖音号</div>
+</div>
+</div>
+</dd>
+</p>
+                
+    <dd><a href="https://space.bilibili.com/349721082?from=search&seid=8881896364999445703" title="B站" onclick="_addDynClicks(&#34;wbimage&#34;, 1714694451, 62657)" target="_blank"><img src="image/img56_5.png" alt=""></a></dd>
+
+
+    <dd><a href="https://weibo.com/tsinghua" title="微博" onclick="_addDynClicks(&#34;wbimage&#34;, 1714694451, 62658)" target="_blank"><img src="image/img56_1.png" alt=""></a></dd>
+
+
+
+
+               <dd><a href="javascript:"><img src="image/img56_2.png" alt=""></a>
+<div class="layer">
+
+<div class="ewm">
+    <div class="img"><img src="image/gfwxewm.png" alt=""></div>
+    <div class="name">清华大学微信</div>
+</div>
+
+</div>
+</dd>
+            
+            
+              <dd class="more"><a href="https://www.iculture.tsinghua.edu.cn/xmtlm/xmtlmjz/qhdxgfzh.htm" target="_blank"><img src="image/dots.png" alt=""></a>
+                    <div class="layer">
+                        校级新媒体矩阵
+                    </div>
+
+                </dd> 
+</dl>
+        </div>
+    </div> 
+            
+    <div class="img-list">
+
+
+
+
+
+
+
+<ul>     
+<li>
+    <a href="https://weibo.com/1676317545/5020070757794085" target="_blank" title="打开调色盘，将粉、白和绿涂抹在立体的画卷，茂密的枝叶被盛开的花朵遮盖，蝴蝶与蜜蜂也忍不住流连，这是微风寄来春的明信片。" onclick="_addDynClicks('wbnews','1714694451', 110664) ">
+        <div class="img"><img src="/__local/2/DE/E1/8BFEA084D5018665C9ED655B476_4DE2A99C_C08A3.jpg"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:24</div>
+        <p>打开调色盘，将粉、白和绿涂抹在立体的画卷，茂密的枝叶被盛开的花朵遮盖，蝴蝶与蜜蜂也忍不住流连，这是微风寄来春的明信片。</p>
+        <div class="info             info-2                                    ">
+            <img src="image/img23_2.png">                
+            <em>
+                微信 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+<li>
+    <a href="https://mp.weixin.qq.com/s/wX4XqsDvMzG-TEmS5_L_sg" target="_blank" title="从零起步，他为火箭发射“一键加速”！" onclick="_addDynClicks('wbnews','1714694451', 110663) ">
+        <div class="img"><img src="/__local/7/F7/A7/D48DF3B8676B0069DAD9C655AD3_2AF96FBD_2AD99.jpg"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:23</div>
+        <p>从零起步，他为火箭发射“一键加速”！</p>
+        <div class="info             info-2                                    ">
+            <img src="image/img23_2.png">                
+            <em>
+                微信 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+<li class="li_01">
+    <a href="https://mp.weixin.qq.com/s/jgfEhlxNhRCtmdJm-VD1sg" target="_blank" title="国内首款！让患者皮肤“浴火重生”！" onclick="_addDynClicks('wbnews','1714694451', 110662) ">
+        <div class="img"><img src="/__local/D/5F/B7/9C48301982118EED10379879D4C_F8E22384_F9613.png"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:22</div>
+        <p>国内首款！让患者皮肤“浴火重生”！</p>
+        <div class="info             info-2                                    ">
+            <img src="image/img23_2.png">                
+            <em>
+                微信 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+<li class="li_01">
+    <a href="https://mp.weixin.qq.com/s/2kkLAQGuLxcwpLNYgzpm0A" target="_blank" title="开往春天的清华校车，一路有他！" onclick="_addDynClicks('wbnews','1714694451', 110661) ">
+        <div class="img"><img src="/__local/2/10/7C/03F1F510E34480639CF236D1190_D04F494C_93182.jpg"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:20</div>
+        <p>开往春天的清华校车，一路有他！</p>
+        <div class="info             info-2                                    ">
+            <img src="image/img23_2.png">                
+            <em>
+                微信 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+<li>
+    <a href="https://weibo.com/1676317545/5021248520193207" target="_blank" title="春风十里，不如园中有你，即将迎来113岁生日的清华，欢迎校友回家！" onclick="_addDynClicks('wbnews','1714694451', 110660) ">
+        <div class="img"><img src="/__local/6/09/C0/A862E79353BF4CED3D3C644F223_CF6B461B_560CA.jpg"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:18</div>
+        <p>春风十里，不如园中有你，即将迎来113岁生日的清华，欢迎校友回家！</p>
+        <div class="info                                                 ">
+            <img src="image/img23_1.png">                
+            <em>
+                微博 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+<li>
+    <a href="https://weibo.com/1676317545/5020070757794085" target="_blank" title="闲暇时去校河两岸，看盛放的樱花和桃花编织成粉白色的网，圈住春天，让它停留地再久一些。" onclick="_addDynClicks('wbnews','1714694451', 110659) ">
+        <div class="img"><img src="/__local/7/46/C5/EEA8EE28611C6A0088758082C3B_C0F48416_1222ED.jpg"></div>
+        <div class="layer">
+        <div class="time">04月10日 11:16</div>
+        <p>闲暇时去校河两岸，看盛放的樱花和桃花编织成粉白色的网，圈住春天，让它停留地再久一些。</p>
+        <div class="info                                                 ">
+            <img src="image/img23_1.png">                
+            <em>
+                微博 
+            
+            </em>
+          </div>
+        </div>
+    </a>
+</li>  
+</ul><script>_showDynClickBatch(['dynclicks_u19_110664','dynclicks_u19_110663','dynclicks_u19_110662','dynclicks_u19_110661','dynclicks_u19_110660','dynclicks_u19_110659'],[110664,110663,110662,110661,110660,110659],"wbnews", 1714694451)</script>
+</div>
+</div>
+<!--<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>-->
+<script type="text/javascript" charset="utf-8">
+    function fenxiangClick(event, shortName) {
+        //bShare.share(event, shortName);
+    }
+</script>
+
+<div class="wal foot-link">
+    <div class="title">常用链接</div>
+    <div class="list">
+        <ul><li><a href="fk.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 88723)">校园参观</a></li>
+            
+<li><a href="zjqh/syxx/xyjt.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1002)">校园公交车</a></li>
+            
+<li><a href="zjqh/syxx/qhxl.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1004)">清华校历</a></li>
+            
+<li><a href="zjqh/xyfg/xydt.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1005)">校园地图</a></li>
+            
+<li><a href="zjqh/syxx.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1006)">实用信息</a></li>
+            
+<li><a href="http://www.tuef.tsinghua.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1008)">教育基金会</a></li>
+            
+<li><a href="http://www.tsinghua.org.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 1009)">校友总会</a></li>
+            
+<li><a href="https://vi.tsinghua.edu.cn/" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 79905)">清华标志</a></li>
+            
+<li><a href="zjqh/syxx/xczy.htm" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1714694451, 88614)">宣传资源</a></li>
+            
+</ul>
+    </div>
+    <div class="ewm">        <a>
+        <div><img src="image/guanweierweima.jpg" alt=""></div><p>欢迎关注清华大学公众号</p>
+        
+    </a>
+</div>
+</div>
+
+<div class="g-foot">
+    <div class="wal">
+        <div class="logo">    	<a>
+	    <img src="image/logo180.png" alt="">
+	</a>
+</div>
+       <div class="list">
+            
+          <ul>  <li>
+
+<div class="p-ico"></div>
+
+
+
+        <p>
+          010-62793001
+        </p>
+    </li>
+
+
+<li>
+
+
+<div class="p-ico"></div>
+
+
+        <p>
+          webmaster@tsinghua.edu.cn
+        </p>
+    </li>
+
+
+<li>
+
+
+<div class="p-ico"></div>
+
+
+        <p>
+          北京市海淀区清华大学
+        </p>
+    </li>
+
+
+
+             
+
+
+
+<li class="yjfkk">
+                            
+                            <p><img src="images/img-yj.png"><a onclick="this.href='https://news-quest.tsinghua.edu.cn/yjfk/index.htm?bsm=1714694451&mc='+escape('清华大学-首页')+'&url='+escape(window.location.href)" href="" target="_blank">意见反馈</a>  </p>
+                        </li>
+            </ul>
+            
+            </div>
+        <div class="info">
+            <div><!-- 版权内容请在本组件"内容配置-版权"处填写 -->
+<p>版权所有 © 清华大学</p><p><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_self">京ICP备15006448号</a></p><p>京公网安备 110402430053 号</p></div>
+            <div><script language="javascript" src="_dwr/engine.js"></script><script language="javascript" src="_dwr/util.js"></script><script language="javascript" src="_dwr/interface/PageCounterDWR.js"></script><a class="tel"><i class="p-ico"></i><span id="a1026" name="a1026"></span>  </a> 
+
+<script>
+function getvisittimea1026()
+{       
+    PageCounterDWR.getVisittime('1714694451','1001','TOTAL_COUNTER','176064768','9',callbackdataa1026)
+}
+function callbackdataa1026(data)
+{
+    document.getElementById("a1026").innerHTML = data; 
+}
+getvisittimea1026();
+</script></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="script/js.js"></script>
+<link rel="stylesheet" href="script/swiper/swiper.min.css">
+<script type="text/javascript" src="script/swiper/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="script/TweenMax.min.js"></script>
