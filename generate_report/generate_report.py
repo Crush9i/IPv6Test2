@@ -67,6 +67,8 @@ def generate_report(domain):
     accessed = result[3]
     support_degree = str(result[4])
     connectivity = result[5]
+    secondary_connectivity = result[6]
+    tertiary_connectivity = result[7]
     resolve_delay = str(result[8])
     TCP_establishment_resolution_delay = str(result[9])
     server_responds_first_packet_delay = str(result[10])
@@ -183,9 +185,10 @@ def generate_report(domain):
     cells[1].text = end_time
     set_table_attr(table)
 
+    ############################################## 5.填充不支持IPV6的链接
     document.add_heading('3.不支持IPV6的链接', level=1)
     document.add_heading('3.1 不支持IPV6的二级链接', level=2)
-    secondary_links = []
+    secondary_links = secondary_connectivity
     table = document.add_table(1, 2, style='Light Shading Accent 1')
     heading_cells = table.rows[0].cells
     heading_cells[0].text = '二级链接'
@@ -197,13 +200,13 @@ def generate_report(domain):
         cells[1].text = '不支持'
 
     document.add_heading('3.2 不支持IPV6的三级链接', level=2)
-    tertiary_links = []
+    tertiary_links = tertiary_connectivity
     table = document.add_table(1, 2, style='Light Shading Accent 1')
     heading_cells = table.rows[0].cells
     heading_cells[0].text = '三级链接'
     heading_cells[1].text = '是否支持ipv6'
 
-    for link in secondary_links:
+    for link in tertiary_links:
         cells = table.add_row().cells
         cells[0].text = link[0]
         cells[1].text = '不支持'
