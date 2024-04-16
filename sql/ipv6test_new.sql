@@ -11,7 +11,7 @@
  Target Server Version : 80036
  File Encoding         : 65001
 
- Date: 07/04/2024 20:39:22
+ Date: 16/04/2024 11:41:16
 */
 
 SET NAMES utf8mb4;
@@ -39,13 +39,7 @@ CREATE TABLE `ipv6_support_degree`  (
   `start_time` timestamp(6) NULL DEFAULT NULL COMMENT '计算开始时间',
   `end_time` timestamp(6) NULL DEFAULT NULL COMMENT '计算完成时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of ipv6_support_degree
--- ----------------------------
-INSERT INTO `ipv6_support_degree` VALUES (1, 'www.google.com', 0, 0, 95.09, NULL, NULL, NULL, 98.09, 98.09, 98.09, 98.09, NULL, 0, '2024-04-07 20:17:36.000000', '2024-04-07 20:17:36.000000');
-INSERT INTO `ipv6_support_degree` VALUES (2, 'www.google.com', 0, 0, 95.09, NULL, NULL, NULL, 98.09, 98.09, 98.09, 98.09, NULL, 0, '2024-04-07 20:37:23.010159', '2024-04-07 20:37:23.010159');
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for website_information
@@ -56,21 +50,18 @@ CREATE TABLE `website_information`  (
   `domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '网站域名',
   `collection_task_start_time` timestamp(6) NULL DEFAULT NULL COMMENT '采集任务下发时间',
   `collection_task_end_time` timestamp(6) NULL DEFAULT NULL COMMENT '采集任务完成时间',
-  `ipv4_addr` json NULL COMMENT 'ipv4地址',
-  `ipv6_addr` json NULL COMMENT 'ipv6地址',
-  `ipv4_source_code` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'ipv4页面源代码',
-  `ipv6_source_code` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'ipv6页面源代码',
+  `ipv4_addr` json NULL COMMENT 'ipv4地址，json类型，可能存在多个解析记录',
+  `ipv6_addr` json NULL COMMENT 'ipv6地址，json类型，可能存在多个解析记录',
+  `ipv4_source_code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'ipv4页面源代码',
+  `ipv6_source_code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'ipv6页面源代码',
   `ipv4_page_pic` blob NULL COMMENT 'ipv4页面截图',
   `ipv6_page_pic` blob NULL COMMENT 'ipv6页面截图',
   `secondary_links` json NULL COMMENT '二级链接列表',
   `tertiary_links` json NULL COMMENT '三级链接列表',
+  `text_similarity` double NULL DEFAULT NULL COMMENT '文本相似度',
+  `pic_similarity` double NULL DEFAULT NULL COMMENT '图片相似度',
+  `text_structure_similarity` double NULL DEFAULT NULL COMMENT '文本结构相似度',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of website_information
--- ----------------------------
-INSERT INTO `website_information` VALUES (1, 'www.google.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `website_information` VALUES (2, 'www.google.com', '2019-05-04 12:09:28.000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{\"secondary_links\": [\"wwww.google.com\", \"www.baidu.com\"]}', NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
