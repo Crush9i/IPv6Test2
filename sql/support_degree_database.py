@@ -1,10 +1,14 @@
 import datetime
 import json
+from PIL import Image
+import io
 
 import cursor as cursor
 import pymysql
 import sql.ConnectDB as connDB
 from similarity.textSimilarity import calculate_sourcecode_similarity
+from similarity.imageSimilarity import image_similarity
+
 from support_degree_calc import try_ipv6_access
 from support_degree_calc import  try_ipv6_resolution
 from information_collection import  Information
@@ -148,6 +152,33 @@ def save_text_similarity(conn: pymysql.connections.Connection, domain='www.tsing
             text_similarity=0
         save_sql = """INSERT INTO ipv6_support_degree (domain,text_similarity) VALUES (%s, %s) ON DUPLICATE KEY UPDATE text_similarity = VALUES(text_similarity)"""
         cursor.execute(save_sql, (domain,text_similarity))
+#保存图片相似度到数据库
+def save_image_similarity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    cursor = conn.cursor()
+    query_sql = "SELECT ipv4_page_pic,ipv6_page_pic FROM website_information WHERE domain = %s"
+    cursor.execute(query_sql, domain)
+    result = cursor.fetchall()
+    for tuple_element in result:
+        if tuple_element[0] and tuple_element[1]:
+            #转化为PNG
+            # 将 bytes 数据转换为 Image 对象
+            ipv4Image = Image.open(io.BytesIO(tuple_element[0]))
+            # 保存为 PNG 格式
+            png_bytes = io.BytesIO()
+            ipv4Image.save(png_bytes, format='PNG')
+            ipv4Pic = png_bytes.getvalue()
+            # 将 bytes 数据转换为 Image 对象
+            ipv6Image = Image.open(io.BytesIO(tuple_element[1]))
+            # 保存为 PNG 格式
+            png_bytes = io.BytesIO()
+            ipv6Image.save(png_bytes, format='PNG')
+            ipv6Pic = png_bytes.getvalue()
+            pic_similarity = image_similarity(ipv4Pic, ipv6Pic)
+        else:
+            pic_similarity=0
+        save_sql = """INSERT INTO ipv6_support_degree (domain,pic_similarity) VALUES (%s, %s) ON DUPLICATE KEY UPDATE pic_similarity = VALUES(pic_similarity)"""
+        cursor.execute(save_sql, (domain,pic_similarity))
+
 
 #从数据库中查询文本相似度
 def query_text_similarity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
@@ -159,13 +190,30 @@ def query_text_similarity(conn: pymysql.connections.Connection, domain='www.tsin
     cursor.close()
     # print(result)
     return result
+#从数据库中查询图片相似度
+def query_image_similarity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    print("域名：",domain)
+    cursor = conn.cursor()
+    query_sql = "SELECT pic_similarity FROM ipv6_support_degree WHERE domain = %s"
+    cursor.execute(query_sql, domain)
+    result = cursor.fetchall()
+    cursor.close()
+    # print(result)
+    return result
 
-#对数据库中已有的所有domain的文本相似度进行保存和查询测试
-def test_text_similaryt(conn):
+#对数据库中已有的所有domain的图片相似度进行保存和查询测试
+def test_image_similaryt(conn):
     domain_list=get_all_domains_in_database(conn)
     for domain in domain_list:
         save_text_similarity(conn,domain)
         query_text_similarity(conn,domain)
+        print("完成1条测试!")
+#对数据库中已有的所有domain的文本相似度进行保存和查询测试
+def test_text_similaryt(conn):
+    domain_list=get_all_domains_in_database(conn)
+    for domain in domain_list:
+        save_image_similarity(conn,domain)
+        query_image_similarity(conn,domain)
         print("完成1条测试!")
 
 #获得数据库中所有域名domain
