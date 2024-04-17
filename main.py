@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 from information_collection import Information
 from sql.ConnectDB import get_mysql_conn
-from sql.website_information_database2 import insert_website_information
+from sql.website_information_database import insert_website_information
 from test_domain_data.get_all_domains import get_num_domains
 
 def information_collect(ip_address, path="./"):
