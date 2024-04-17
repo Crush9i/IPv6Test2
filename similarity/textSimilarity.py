@@ -6,27 +6,6 @@ import jieba
 from urllib.parse import urlparse
 from simhash import Simhash
 
-headers = {
-    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    "accept-encoding": "gzip, deflate, br",
-    "accept-language": "zh-CN,zh;q=0.9",
-    "cache-control": "max-age=0",
-    "cookie": "__yjs_duid=1_06d53fe303b699751bfabe6b9489aa101667713733022; Hm_lvt_c59f2e992a863c2744e1ba985abaea6c=1667713735; zkhanecookieclassrecord=%2C68%2C54%2C; Hm_lpvt_c59f2e992a863c2744e1ba985abaea6c=1667713739",
-    "if-modified-since": "Fri, 04 Nov 2022 16:27:59 GMT",
-    "referer": "https://pic.netbian.com/shoujibizhi/",
-    "sec-ch-ua": "\";Not A Brand\";v=\"99\", \"Chromium\";v=\"94\"",
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": "\"Windows\"",
-    "sec-fetch-dest": "document",
-    "sec-fetch-mode": "navigate",
-    "sec-fetch-site": "same-origin",
-    "sec-fetch-user": "?1",
-    "upgrade-insecure-requests": "1",
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Core/1.94.178.400 QQBrowser/11.2.5170.400",
-    'If-None-Natch': '',
-    'If-Modified-Since': '',
-    'Connection': 'close'
-}
 
 
 # '''
@@ -142,23 +121,35 @@ def process_text(text):
     return segments
 
 
-# 计算IPV4文本和IPV6文本内容相似度，计算方法是Simhash，返回similarity （100.00%）
+# 计算IPV4文本和IPV6文本内容相似度，计算方法是Simhash，返回similarity
 def calculate_similarity(ipv4_text, ipv6_text):
     ipv4_text = process_text(ipv4_text)  # 自己分词
     ipv6_text = process_text(ipv6_text)
     ipv4_simhash = Simhash(ipv4_text, f=128)  # 在文本长度较短或者相似度较高的情况下，可能会导致相似度计算的结果不够稳定。
     ipv6_simhash = Simhash(ipv6_text, f=128)
     distance = ipv4_simhash.distance(ipv6_simhash)  # 计算汉明距离
-    similarity = "{:.2f}%".format((1 - distance / 128) * 100)
+    similarity = round((1 - distance / 128)*100 ,2)
     return similarity
 
-
+def calculate_sourcecode_similarity(ipv4_source_code,ipv6_source_code):
+    if ipv4_source_code:  # IPV4访问
+        ipv4_text = get_text(ipv4_source_code)
+    else:
+        print("IPV4访问失败!!!")
+        return 0
+    if ipv6_source_code:
+        ipv6_text = get_text(ipv6_source_code)
+    else:
+        print("IPV6访问失败!!!")
+        return 0
+    similarity = calculate_similarity(ipv4_text, ipv6_text)
+    print(f"IPV4访问和IPV6访问内容相似度为：{similarity}")
+    return similarity
 ''' 20. ipv4和ipv6环境下，页面文本内容的相似性:get_webpage_similarity(url) '''
 '''
 输入：url——网址
 输出：IPV4和IPV6访问页面内容相似度——100.00%
 '''
-
 
 def get_webpage_similarity(url):
     print("IPV4访问:")

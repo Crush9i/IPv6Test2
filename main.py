@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from information_collection import Information
 from sql.ConnectDB import get_mysql_conn
 from sql.website_information_database import insert_website_information
-
+from test_domain_data.get_all_domains import get_num_domains
 
 def information_collect(ip_address, path="./"):
     print(ip_address)
@@ -72,7 +72,7 @@ def information_collect(ip_address, path="./"):
     except FileNotFoundError as e:
         print(e)
 
-    insert_website_information(get_mysql_conn(), domain=ip_address,
+    insert_website_information(get_mysql_conn(), domain=domain,
                                collection_task_start_time=collection_task_start_time,
                                collection_task_end_time=collection_task_end_time,
                                ipv4_addr=information.ipv4_address, ipv6_addr=information.ipv6_address,
@@ -80,6 +80,13 @@ def information_collect(ip_address, path="./"):
                                ipv6_page_pic=ipv6_pic, ipv4_page_pic=ipv4_pic,
                                secondary_links=information.secondary_links, tertiary_links=information.tertiary_links)
 
+#插入多条数据
+def insert_moredomain_information(num=4):
+    test_domains,test_urls=get_num_domains(num)
+    for url in test_urls:
+        information_collect(url)
+
 
 if __name__ == "__main__":
-    information_collect("https://www.tsinghua.edu.cn")
+    insert_moredomain_information(num=4)#选择num个网址插入数据到数据库
+
