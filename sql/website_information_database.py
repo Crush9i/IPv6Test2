@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pymysql.connections
 
-
+from similarity.textSimilarity import  calculate_sourcecode_similarity
 # import ConnectDB as connDB
 
 
@@ -43,10 +43,11 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
     # 在进入插入之前先进行查询，如果存在相应的结果，那么进行更新，如果不存在相应的结果，那么进行插入操作
 
     result = query_website_information(conn, domain)
-    if result is not None:
+    if result:
         update_website_information(conn, domain, collection_task_start_time, collection_task_end_time,
                                    ipv4_addr, ipv6_addr, ipv4_source_code, ipv6_source_code, ipv4_page_pic,
                                    ipv6_page_pic, secondary_links, tertiary_links)
+        print("完成更新!!")
     else:
         ipv4_page_pic = base64.b64decode(ipv4_page_pic)
         ipv6_page_pic = base64.b64decode(ipv6_page_pic)
@@ -64,6 +65,7 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
         cursor.execute(sql, data_tuple)
         cursor.close()
         conn.commit()
+        print("完成插入!")
 
 
 def query_website_information(conn: pymysql.connections.Connection, domain='www.google.com'):
