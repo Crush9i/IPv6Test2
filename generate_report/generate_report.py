@@ -1,4 +1,5 @@
 import datetime
+import json
 
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
@@ -53,9 +54,9 @@ def set_table_attr(table):
 
 
 ############################################## 1.获取需要填充的参数
-domain = 'www.neu.edu.cn'
-start_time = datetime.date.today()
-resolved = True
+# domain = 'www.neu.edu.cn'
+# start_time = datetime.date.today()
+# resolved = True
 
 
 def generate_report(domain):
@@ -78,6 +79,9 @@ def generate_report(domain):
     start_time = str(result[14])
     # print(start_time)
     end_time = str(result[15])
+    text_similarity = str(result[16])
+    pic_similarity = str(result[17])
+    text_structure_similarity = str(result[18])
 
     document = Document()
     ############################################## 2.设置报告标题
@@ -133,7 +137,7 @@ def generate_report(domain):
     ############################################## 4.标题2及下面内容
     # 根据ipv6的支持度数据填充到一个表格中
     document.add_heading('2.检测报告', level=1)
-    table = document.add_table(13, 2, style='Light Shading Accent 1')
+    table = document.add_table(16, 2, style='Light Shading Accent 1')
     heading_cells = table.rows[0].cells
     heading_cells[0].text = '域名'
     heading_cells[1].text = domain
@@ -176,19 +180,28 @@ def generate_report(domain):
         cells[1].text = '具有'
     else:
         cells[1].text = '不具有'
-
     cells = table.rows[11].cells
     cells[0].text = '计算开始时间'
     cells[1].text = start_time
     cells = table.rows[12].cells
     cells[0].text = '计算结束时间'
     cells[1].text = end_time
+    cells = table.rows[13].cells
+    cells[0].text = '文本相似度'
+    cells[1].text = text_similarity + 's'
+    cells = table.rows[14].cells
+    cells[0].text = '图片相似度'
+    cells[1].text = pic_similarity + 's'
+    cells = table.rows[15].cells
+    cells[0].text = '文本结构相似度'
+    cells[1].text = text_structure_similarity + 's'
     set_table_attr(table)
 
     ############################################## 5.填充不支持IPV6的链接
     document.add_heading('3.不支持IPV6的链接', level=1)
     document.add_heading('3.1 不支持IPV6的二级链接', level=2)
-    secondary_links = secondary_connectivity
+    secondary_links = json.load(secondary_connectivity)
+    secondary_links = secondary_links['unconnect']
     table = document.add_table(1, 2, style='Light Shading Accent 1')
     heading_cells = table.rows[0].cells
     heading_cells[0].text = '二级链接'
@@ -200,7 +213,8 @@ def generate_report(domain):
         cells[1].text = '不支持'
 
     document.add_heading('3.2 不支持IPV6的三级链接', level=2)
-    tertiary_links = tertiary_connectivity
+    tertiary_links = json.load(tertiary_connectivity)
+    tertiary_links = tertiary_links['unconnect']
     table = document.add_table(1, 2, style='Light Shading Accent 1')
     heading_cells = table.rows[0].cells
     heading_cells[0].text = '三级链接'

@@ -41,14 +41,6 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
     # collection_task_end_time = datetime.strptime(collection_task_end_time, '%Y-%m-%d %H:%M:%S')
 
     # 在进入插入之前先进行查询，如果存在相应的结果，那么进行更新，如果不存在相应的结果，那么进行插入操作
-    ipv4_page_pic = base64.b64decode(ipv4_page_pic)
-    ipv6_page_pic = base64.b64decode(ipv6_page_pic)
-
-    secondary_links = json.dumps({"secondary_links": secondary_links})
-    tertiary_links = json.dumps({"tertiary_links": tertiary_links})
-
-    ipv4_addr = json.dumps({"ipv4_addr": ipv4_addr})
-    ipv6_addr = json.dumps({"ipv6_addr": ipv6_addr})
 
     result = query_website_information(conn, domain)
     if result is not None:
@@ -56,10 +48,18 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
                                    ipv4_addr, ipv6_addr, ipv4_source_code, ipv6_source_code, ipv4_page_pic,
                                    ipv6_page_pic, secondary_links, tertiary_links)
     else:
+        ipv4_page_pic = base64.b64decode(ipv4_page_pic)
+        ipv6_page_pic = base64.b64decode(ipv6_page_pic)
+
+        secondary_links = json.dumps({"secondary_links": secondary_links})
+        tertiary_links = json.dumps({"tertiary_links": tertiary_links})
+
+        ipv4_addr = json.dumps({"ipv4_addr": ipv4_addr})
+        ipv6_addr = json.dumps({"ipv6_addr": ipv6_addr})
         # 执行sql语句
         data_tuple = (
-        domain, collection_task_start_time, collection_task_end_time, ipv4_addr, ipv6_addr, ipv4_source_code,
-        ipv6_source_code, ipv4_page_pic, ipv6_page_pic, secondary_links, tertiary_links)
+            domain, collection_task_start_time, collection_task_end_time, ipv4_addr, ipv6_addr, ipv4_source_code,
+            ipv6_source_code, ipv4_page_pic, ipv6_page_pic, secondary_links, tertiary_links)
         cursor = conn.cursor()
         cursor.execute(sql, data_tuple)
         cursor.close()
@@ -186,7 +186,6 @@ def update_website_information(conn: pymysql.connections.Connection, domain='www
     cursor.execute(sql, data_tuple)
     cursor.close()
     conn.commit()
-
 
 # if __name__ == '__main__':
 #     conn = connDB.get_mysql_conn()
