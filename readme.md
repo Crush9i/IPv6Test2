@@ -1,6 +1,6 @@
 
 **1. 运行sql/setDatabase.py**<br>
-将database_passwd = "180380zj" 更改为自己的mysql密码，<br>
+将database_passwd = "180380zj" 更改为自己的mysql密码，ConnectDB.py中密码也要更改。<br>
 运行后会创建ipv6test数据库<br>
 **2. 运行main.py**<br>
 实现在website_information中插入num个网址的网页信息<br>
