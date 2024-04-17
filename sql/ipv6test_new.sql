@@ -11,7 +11,7 @@
  Target Server Version : 80036
  File Encoding         : 65001
 
- Date: 16/04/2024 11:41:16
+ Date: 17/04/2024 10:32:37
 */
 
 SET NAMES utf8mb4;
@@ -38,8 +38,11 @@ CREATE TABLE `ipv6_support_degree`  (
   `ipv6_authorization_system` tinyint NULL DEFAULT NULL COMMENT '是否具备ipv6授权体系',
   `start_time` timestamp(6) NULL DEFAULT NULL COMMENT '计算开始时间',
   `end_time` timestamp(6) NULL DEFAULT NULL COMMENT '计算完成时间',
+  `text_similarity` double NULL DEFAULT NULL COMMENT '文本相似度',
+  `pic_similarity` double NULL DEFAULT NULL COMMENT '图片相似度',
+  `text_structure_similarity` double NULL DEFAULT NULL COMMENT '文本结构相似度',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for website_information
@@ -58,10 +61,7 @@ CREATE TABLE `website_information`  (
   `ipv6_page_pic` blob NULL COMMENT 'ipv6页面截图',
   `secondary_links` json NULL COMMENT '二级链接列表',
   `tertiary_links` json NULL COMMENT '三级链接列表',
-  `text_similarity` double NULL DEFAULT NULL COMMENT '文本相似度',
-  `pic_similarity` double NULL DEFAULT NULL COMMENT '图片相似度',
-  `text_structure_similarity` double NULL DEFAULT NULL COMMENT '文本结构相似度',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
