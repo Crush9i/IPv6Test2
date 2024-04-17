@@ -43,7 +43,7 @@ def insert_support_degree(conn, domain='www.baidu.com', resolved=False, accessed
         ipv6_authorization_system,
         start_time, end_time, text_similarity, pic_similarity, text_structure_similarity)
     result = query_ipv6_records(conn, domain)
-    if result:
+    if result is not None:
         update_support_degree(conn, domain, resolved, accessed, support_degree, connectivity, secondary_connectivity,
                               tertiary_connectivity, resolve_delay, tcp_establishment_resolution_delay,
                               server_responds_first_packet_delay, server_responds_first_page_delay, access_stability,
