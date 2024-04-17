@@ -3,6 +3,7 @@ import socket
 import subprocess
 import sys
 import time
+import urllib
 from telnetlib import EC
 from urllib.parse import urlparse, urljoin
 import requests
@@ -14,9 +15,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 from information_collection import Information
-from similarity.imageSimilarity import image_similarity
-from similarity.structureSimilarity import structure_similarity
-from similarity.textSimilarity import get_webpage_similarity
+# from similarity.imageSimilarity import image_similarity
+# from similarity.structureSimilarity import structure_similarity
+# from similarity.textSimilarity import get_webpage_similarity
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -62,23 +63,48 @@ def get_Hostname(url):
 def test_server(url, port, use_https=False):
     requests.packages.urllib3.util.connection.allowed_gai_family = ipv6_family  # 切换socket至ipv6环境
     try:
-        hostname = get_Hostname(url)  # 获取主机名
+        # hostname = get_Hostname(url)  # 获取主机名
         protocol = "https" if use_https else "http"
-        full_url = f"{protocol}://{hostname}:{port}"
+        full_url = f"{protocol}://{url}:{port}"
         print(full_url)
         response = requests.get(full_url, headers=headers, verify=False)
 
         if response.status_code == 200:
-            print(f"成功从{hostname} 的服务端口 {port} 发起{protocol}请求，并得到响应。")
+            print(f"成功从{url} 的服务端口 {port} 发起{protocol}请求，并得到响应。")
             return True
         else:
             print(response.status_code)
-            print(f"从{hostname} 的服务端口 {port} 发起{protocol}请求，但未得到有效响应。")
+            print(f"从{url} 的服务端口 {port} 发起{protocol}请求，但未得到有效响应。")
             return False
     except Exception as e:
         print(f"发生异常：{e}")
         return False
-
+# 尝试通过IPv6解析网站
+def try_ipv6_resolution(domain):
+    try:
+        # 获取地址信息，其中AF_INET6指定了IPv6地址族
+        address_info = socket.getaddrinfo(domain, None, socket.AF_INET6)
+        # 如果不为空，则表示存在IPv6地址
+        if address_info:
+            return True
+    except socket.gaierror as e:
+        # 如果getaddrinfo引发异常，可能是域名不存在或不支持IPv6解析
+        pass
+    return False
+# 尝试通过IPv6访问网站
+def try_ipv6_access(domain):
+    try:
+        # 创建一个IPv6的URL
+        url = f'https://{domain}'
+        # 使用urllib请求URL内容
+        response = urllib.request.urlopen(url)
+        # 读取响应内容
+        content = response.read()
+        print(f"成功通过IPv6访问 {domain}，响应内容长度：{len(content)}")
+        return True
+    except urllib.error.URLError as e:
+        print(f"无法通过IPv6访问 {domain}，错误信息：{e.reason}")
+        return False
 
 # 获得二级链接
 def get_sub_links(base_url):

@@ -1,11 +1,15 @@
 import datetime
 import json
 
+import cursor as cursor
 import pymysql
-
 import sql.ConnectDB as connDB
 from similarity.textSimilarity import calculate_sourcecode_similarity
-
+from support_degree_calc import try_ipv6_access
+from support_degree_calc import  try_ipv6_resolution
+from information_collection import  Information
+from support_degree_calc import IPv6SupportDegree
+from support_degree_calc import  get_Hostname
 def insert_support_degree(conn, domain='www.baidu.com', resolved=False, accessed=False, support_degree=95.09,
                           connectivity: str = None,
                           secondary_connectivity=None, tertiary_connectivity=None, resolve_delay=98.09,
@@ -176,11 +180,172 @@ def get_all_domains_in_database(conn):
         domain_list.append(domain)
     return domain_list
 
+#保存是否可以被访问
+def save_ipv6_accessed(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    try:
+        cursor = conn.cursor()
+        accessed = try_ipv6_access(domain)
+        # 检查domain是否存在
+        query = "SELECT id FROM ipv6_support_degree WHERE domain = %s"
+        cursor.execute(query, (domain,))
+        result = cursor.fetchone()
+        if result:
+            # 如果存在，更新数据
+            update_query = """
+            UPDATE ipv6_support_degree SET accessed = %s WHERE domain = %s
+            """
+            cursor.execute(update_query, (accessed, domain))
+        else:
+            # 如果不存在，插入新数据
+            insert_query = """
+            INSERT INTO ipv6_support_degree (domain, accessed) VALUES (%s, %s)
+            """
+            cursor.execute(insert_query, (domain, accessed))
+        # 提交事务
+        conn.commit()
+    except pymysql.MySQLError as e:
+        conn.rollback()  # 发生错误时回滚事务
+        print(f"An error occurred: {e}")
+#保存是否可以被解析到数据库
+def save_ipv6_resolved(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    try:
+        cursor = conn.cursor()
+        resolved = try_ipv6_resolution(domain)
+        # 检查domain是否存在
+        query = "SELECT id FROM ipv6_support_degree WHERE domain = %s"
+        cursor.execute(query, (domain,))
+        result = cursor.fetchone()
+        if result:
+            # 如果存在，更新数据
+            update_query = """
+            UPDATE ipv6_support_degree SET resolved = %s WHERE domain = %s
+            """
+            cursor.execute(update_query, (resolved, domain))
+        else:
+            # 如果不存在，插入新数据
+            insert_query = """
+            INSERT INTO ipv6_support_degree (domain, resolved) VALUES (%s, %s)
+            """
+            cursor.execute(insert_query, (domain, resolved))
+        # 提交事务
+        conn.commit()
+    except pymysql.MySQLError as e:
+        conn.rollback()  # 发生错误时回滚事务
+        print(f"An error occurred: {e}")
+#保存二级链接连通性到数据库
+def save_ipv6_secondary_connectivity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    try:
+        cursor = conn.cursor()
+        url = 'https://' + domain
+        links = Information(url).get_secondary_links()
+        print(links)
+        result_dict = {"connect": [], "unconnect": []}
+        for link in links:
+            link_domain=get_Hostname(link)
+            if try_ipv6_resolution(link_domain):
+                result_dict["connect"].append(link_domain)
+            else:
+                result_dict["unconnect"].append(link_domain)
+        # 将字典转换为 JSON 字符串
+        secondary_connectivity_json = json.dumps(result_dict, ensure_ascii=False)
+        # 检查 domain 是否存在
+        query = "SELECT id FROM ipv6_support_degree WHERE domain = %s"
+        cursor.execute(query, (domain,))
+        db_result = cursor.fetchone()
+        if db_result:
+            # 如果存在，更新数据
+            update_query = """
+            UPDATE ipv6_support_degree SET secondary_connectivity = %s WHERE domain = %s
+            """
+            cursor.execute(update_query, (secondary_connectivity_json, domain))
+        else:
+            # 如果不存在，插入新数据
+            insert_query = """
+            INSERT INTO ipv6_support_degree (domain, secondary_connectivity) VALUES (%s, %s)
+            """
+            cursor.execute(insert_query, (domain, secondary_connectivity_json))
+        # 提交事务
+        conn.commit()
+    except pymysql.MySQLError as e:
+        conn.rollback()  # 发生错误时回滚事务
+        print(f"An error occurred: {e}")
+#保存三级链接连通性到数据库
+def save_ipv6_tertiary_connectivity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    try:
+        cursor = conn.cursor()
+        url = 'https://' + domain
+        links = Information(url).get_tertiary_links()
+        print(links)
+        result_dict = {"connect": [], "unconnect": []}
+        for link in links:
+            link_domain=get_Hostname(link)
+            if try_ipv6_resolution(link_domain):
+                result_dict["connect"].append(link_domain)
+            else:
+                result_dict["unconnect"].append(link_domain)
+        # 将字典转换为 JSON 字符串
+        tertiary_connectivity_json = json.dumps(result_dict, ensure_ascii=False)
+        # 检查 domain 是否存在
+        query = "SELECT id FROM ipv6_support_degree WHERE domain = %s"
+        cursor.execute(query, (domain,))
+        db_result = cursor.fetchone()
+        if db_result:
+            # 如果存在，更新数据
+            update_query = """
+            UPDATE ipv6_support_degree SET tertiary_connectivity = %s WHERE domain = %s
+            """
+            cursor.execute(update_query, (tertiary_connectivity_json, domain))
+        else:
+            # 如果不存在，插入新数据
+            insert_query = """
+            INSERT INTO ipv6_support_degree (domain, tertiary_connectivity) VALUES (%s, %s)
+            """
+            cursor.execute(insert_query, (domain, tertiary_connectivity_json))
+        # 提交事务
+        conn.commit()
+    except pymysql.MySQLError as e:
+        conn.rollback()  # 发生错误时回滚事务
+        print(f"An error occurred: {e}")
+#保存ipv6访问稳定性到数据库
+def save_access_stability(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    try:
+        cursor = conn.cursor()
+        url = 'https://'+domain
+        access_stability= IPv6SupportDegree(url).test_ipv6_stablity()
+        print(access_stability)
+        print("##")
+        # 检查domain是否存在
+        query = "SELECT id FROM ipv6_support_degree WHERE domain = %s"
+        cursor.execute(query, (domain,))
+        result = cursor.fetchone()
+        if result:
+            # 如果存在，更新数据
+            update_query = """
+            UPDATE ipv6_support_degree SET access_stability = %s WHERE domain = %s
+            """
+            cursor.execute(update_query, (access_stability, domain))
+        else:
+            # 如果不存在，插入新数据
+            insert_query = """
+            INSERT INTO ipv6_support_degree (domain, access_stability) VALUES (%s, %s)
+            """
+            cursor.execute(insert_query, (domain, access_stability))
+        # 提交事务
+        conn.commit()
+    except pymysql.MySQLError as e:
+        conn.rollback()  # 发生错误时回滚事务
+        print(f"An error occurred: {e}")
 if __name__ == '__main__':
     conn = connDB.get_mysql_conn()
     # insert_support_degree(conn)
-    test_text_similaryt(conn)
+    # test_text_similaryt(conn)
     # save_text_similarity(conn)
     # query_text_similarity(conn)
-    # query_ipv6_records(conn)
+    # # query_ipv6_records(conn)
+    # conn = connDB.get_mysql_conn()
+    save_ipv6_resolved(conn,"www.cupes.edu.cn")
+    save_ipv6_accessed(conn, "www.cupes.edu.cn")
+    save_ipv6_secondary_connectivity(conn,'www.tsinghua.edu.cn')
+    save_ipv6_tertiary_connectivity(conn, 'www.tsinghua.edu.cn')
+    # save_access_stability(conn, 'www.tsinghua.edu.cn')
     conn.close()
