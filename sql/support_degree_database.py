@@ -216,6 +216,36 @@ def test_text_similaryt(conn):
         query_image_similarity(conn,domain)
         print("完成1条测试!")
 
+
+def save_text_structure_similarity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    cursor = conn.cursor()
+    query_sql = "SELECT ipv4_source_code,ipv6_source_code FROM website_information WHERE domain = %s"
+    cursor.execute(query_sql, domain)
+    result = cursor.fetchall()
+    for tuple_element in result:
+        if tuple_element[0] and tuple_element[1]:
+            text_structure_similarity = structure_similarity(tuple_element[0], tuple_element[1])
+        else:
+            text_structure_similarity=0
+        save_sql = """INSERT INTO ipv6_support_degree (domain,text_structure_similarity) VALUES (%s, %s) ON DUPLICATE KEY UPDATE text_similarity = VALUES(text_structure_similarity)"""
+        cursor.execute(save_sql, (domain,text_structure_similarity))
+
+def query_text_structure_similarity(conn: pymysql.connections.Connection, domain='www.tsinghua.edu.cn'):
+    print("域名：",domain)
+    cursor = conn.cursor()
+    query_sql = "SELECT text_structure_similarity FROM ipv6_support_degree WHERE domain = %s"
+    cursor.execute(query_sql, domain)
+    result = cursor.fetchall()
+    cursor.close()
+    # print(result)
+    return result
+def test_text_structure_similarit(conn):
+    domain_list=get_all_domains_in_database(conn)
+    for domain in domain_list:
+        save_text_structure_similarity(conn,domain)
+        query_text_structure_similarity(conn,domain)
+        print("完成1条测试!")
+
 #获得数据库中所有域名domain
 def get_all_domains_in_database(conn):
     cursor = conn.cursor()
