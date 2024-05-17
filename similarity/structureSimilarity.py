@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from collections import Counter
 from html.parser import HTMLParser
 import numpy as np
@@ -31,8 +32,8 @@ requests.packages.urllib3.disable_warnings()
 # # 你的urllib3请求代码
 # http = urllib3.PoolManager()
 # response = http.request('GET', 'http://video.neu6.edu.cn/')
-# url = "http://video.neu6.edu.cn/"
-# response2 = requests.get(url)
+# domain = "http://video.neu6.edu.cn/"
+# response2 = requests.get(domain)
 #
 # # 检查请求是否成功
 # if response2.status_code == 200:

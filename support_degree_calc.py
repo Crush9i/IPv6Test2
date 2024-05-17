@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import socket
 import subprocess
 import sys
@@ -6,15 +7,25 @@ import time
 import urllib
 from telnetlib import EC
 from urllib.parse import urlparse, urljoin
+
+import pymysql
 import requests
 import urllib3
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 from information_collection import Information
+from similarity.imageSimilarity import image_similarity
+from similarity.structureSimilarity import structure_similarity
+from similarity.textSimilarity import calculate_sourcecode_similarity
+from sql.ConnectDB import get_mysql_conn
+
+from sql.website_information_database import get_secondary_links, get_tertiary_links
+
 # from similarity.imageSimilarity import image_similarity
 # from similarity.structureSimilarity import structure_similarity
 # from similarity.textSimilarity import get_webpage_similarity
@@ -42,6 +53,8 @@ headers = {
     'If-Modified-Since': ''
 }
 
+conn = get_mysql_conn()
+
 
 def ipv6_family():
     return socket.AF_INET6
@@ -51,19 +64,9 @@ def ipv4_family():
     return socket.AF_INET
 
 
-# 获取主机名
-def get_Hostname(url):
-    if url.startswith("http"):
-        ip_address = urlparse(url).hostname
-    else:
-        ip_address = url
-    return ip_address
-
-
 def test_server(url, port, use_https=False):
     requests.packages.urllib3.util.connection.allowed_gai_family = ipv6_family  # 切换socket至ipv6环境
     try:
-        # hostname = get_Hostname(url)  # 获取主机名
         protocol = "https" if use_https else "http"
         full_url = f"{protocol}://{url}:{port}"
         print(full_url)
@@ -71,14 +74,16 @@ def test_server(url, port, use_https=False):
 
         if response.status_code == 200:
             print(f"成功从{url} 的服务端口 {port} 发起{protocol}请求，并得到响应。")
-            return True
+            return 1
         else:
             print(response.status_code)
             print(f"从{url} 的服务端口 {port} 发起{protocol}请求，但未得到有效响应。")
-            return False
+            return 0
     except Exception as e:
         print(f"发生异常：{e}")
-        return False
+        return 0
+
+
 # 尝试通过IPv6解析网站
 def try_ipv6_resolution(domain):
     try:
@@ -86,11 +91,13 @@ def try_ipv6_resolution(domain):
         address_info = socket.getaddrinfo(domain, None, socket.AF_INET6)
         # 如果不为空，则表示存在IPv6地址
         if address_info:
-            return True
+            return 1
     except socket.gaierror as e:
         # 如果getaddrinfo引发异常，可能是域名不存在或不支持IPv6解析
         pass
-    return False
+    return 0
+
+
 # 尝试通过IPv6访问网站
 def try_ipv6_access(domain):
     try:
@@ -101,35 +108,10 @@ def try_ipv6_access(domain):
         # 读取响应内容
         content = response.read()
         print(f"成功通过IPv6访问 {domain}，响应内容长度：{len(content)}")
-        return True
+        return 1
     except urllib.error.URLError as e:
         print(f"无法通过IPv6访问 {domain}，错误信息：{e.reason}")
-        return False
-
-# 获得二级链接
-def get_sub_links(base_url):
-    try:
-        response = requests.get(base_url, timeout=10, headers=headers, verify=False)  # 设置超时时间为10秒
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            sub_links = set()
-            for link in soup.find_all('a'):
-                href = link.get('href')
-                # 排除不完整的链接和已经是完整URL的链接
-                if href and not href.startswith('#') and not href.startswith('http') and href.find(
-                        "javascript") == -1 and href.find("@") == -1:
-                    full_url = urljoin(base_url, href)
-                    print(full_url)
-                    sub_links.add(full_url)
-            return list(sub_links)
-        else:
-            print(f"无法访问 {base_url}")
-            return []
-    except requests.exceptions.ConnectTimeout as e:
-        print(f"连接超时: {e}")
-    s = requests.session()
-    s.keep_alive = False
-    return []
+        return 0
 
 
 # 测试建立ipv6连接成功率
@@ -156,32 +138,32 @@ def get_ipv6_connectivity(links):
     return success_rate
 
 
-# 获得三级链接
-def get_third_links(base_url):
-    second_level_links = get_sub_links(base_url)
-    third_level_links = set()
-    for link in second_level_links:
-        third_level_links.update(get_sub_links(link))
-    return list(third_level_links)
-
-
 class IPv6SupportDegree:
     def __init__(self, ip_address):
-        self.ip_address = ip_address
-        self.ipv6_http_server = False
-        self.ipv6_https_server = False
-        self.dual_stack = "None"
+        self.domain = ip_address
+        self.ip_address = "https://" + self.domain
+        self.support_degree = 0
+        self.ipv6_resolution = 0
+        self.ipv6_http_server = 0
+        self.ipv6_https_server = 0
+        self.dual_stack = 0
         self.ipv6_connectivity = 0
         self.ipv6_sub_connectivity = 0
         self.ipv6_third_connectivity = 0
         self.ipv6_stablity = 0
-        self.ipv6_authorization = False
+        self.ipv6_authorization = 0
         self.ipv4_dns_delay = 0
         self.ipv6_dns_delay = 0
         self.dns_delay_ratio = 0
         self.ipv4_tcp_delay = 0
         self.ipv6_tcp_delay = 0
         self.tcp_delay_ratio = 0
+        self.ipv4_ack_delay = 0
+        self.ipv6_ack_delay = 0
+        self.ack_delay_ratio = 0
+        self.ipv4_delay = 0
+        self.ipv6_delay = 0
+        self.delay_ratio = 0
         self.text_similarity = 0
         self.image_similarity = 0
         self.structure_similarity = 0
@@ -191,10 +173,13 @@ class IPv6SupportDegree:
     向网站ipv6地址的服务端口发起http/https请求，测试是否得到应答
     """
 
+    def test_ipv6_resolution(self):
+        self.ipv6_resolution = try_ipv6_resolution(self.domain)
+
     def test_ipv6_server(self, http_port=80, https_port=443):
-        self.ipv6_http_server = test_server(self.ip_address, http_port)  # 发起HTTP请求测试
+        self.ipv6_http_server = test_server(self.domain, http_port)  # 发起HTTP请求测试
         # 若要测试HTTPS请求，将use_https参数设为True
-        self.ipv6_https_server = test_server(self.ip_address, https_port, use_https=True)
+        self.ipv6_https_server = test_server(self.domain, https_port, use_https=True)
 
     # 2. 网站支持ipv4和ipv6双栈
     """
@@ -203,21 +188,20 @@ class IPv6SupportDegree:
 
     def check_dual_stack_support(self):
         try:
-            target_url = get_Hostname(self.ip_address)
-            ipv4_address = socket.getaddrinfo(target_url, None, socket.AF_INET)
-            ipv6_address = socket.getaddrinfo(target_url, None, socket.AF_INET6)
+            ipv4_address = socket.getaddrinfo(self.domain, None, socket.AF_INET)
+            ipv6_address = socket.getaddrinfo(self.domain, None, socket.AF_INET6)
 
             if ipv4_address and ipv6_address:
-                self.dual_stack = "ipv4&ipv6"
+                self.dual_stack = 3
                 return "Both IPv4 and IPv6 are supported."
             elif ipv4_address:
-                self.dual_stack = "ipv4"
+                self.dual_stack = 1
                 return "IPv4 is supported, but IPv6 is not supported."
             elif ipv6_address:
-                self.dual_stack = "ipv6"
+                self.dual_stack = 2
                 return "IPv6 is supported, but IPv4 is not supported."
             else:
-                return "Neither IPv4 nor IPv6 is supported."
+                return 0
         except socket.gaierror:
             return "Error occurred while resolving addresses."
 
@@ -243,11 +227,11 @@ class IPv6SupportDegree:
                     response = requests.get(self.ip_address, headers=headers, verify=False)
                     if response.status_code == 200:
                         success_count += 1
-                        print(f"成功访问 {self.ip_address}，使用DNS服务器 {dns_server}")
+                        print(f"成功访问 {self.domain}，使用DNS服务器 {dns_server}")
                     else:
-                        print(f"访问 {self.ip_address} 失败，使用DNS服务器 {dns_server}")
+                        print(f"访问 {self.domain} 失败，使用DNS服务器 {dns_server}")
                 except Exception as e:
-                    print(f"访问 {self.ip_address} 出现异常，使用DNS服务器 {dns_server}: {e}")
+                    print(f"访问 {self.domain} 出现异常，使用DNS服务器 {dns_server}: {e}")
 
                 time.sleep(interval)  # 每次访问间隔300秒
 
@@ -268,7 +252,7 @@ class IPv6SupportDegree:
     """
 
     def test_ipv6_sub_connectivity(self):
-        links = get_sub_links(self.ip_address)
+        links = get_secondary_links(conn, self.domain)
         self.ipv6_sub_connectivity = get_ipv6_connectivity(links)
         print(f"二级链接连通性成功率为: {self.ipv6_sub_connectivity}%")
 
@@ -279,7 +263,7 @@ class IPv6SupportDegree:
     """
 
     def test_ipv6_third_connectivity(self):
-        links = get_third_links(self.ip_address)
+        links = get_tertiary_links(conn, self.domain)
         self.ipv6_third_connectivity = get_ipv6_connectivity(links)
         print(f"三级链接连通性成功率为: {self.ipv6_third_connectivity}%")
 
@@ -314,7 +298,7 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def measure_dns_delay(self, num_tests: int = 10, interval: int = 5) -> float:
+    def measure_dns_delay(self, num_tests, interval) -> float:
         """
         测量解析指定域名到IPv4地址的平均时延。
 
@@ -327,11 +311,11 @@ class IPv6SupportDegree:
         for _ in range(num_tests):
             start_time = time.time()
             # 解析域名，注意只取IPv4地址
-            socket.getaddrinfo(get_Hostname(self.ip_address), None, family=socket.AF_INET)
+            socket.getaddrinfo(self.domain, None, family=socket.AF_INET)
             end_time = time.time()
             delay = end_time - start_time
             delays.append(delay)
-            print(f"解析 {self.ip_address} 花费时间：{delay}秒")
+            print(f"解析 {self.domain} 花费时间：{delay}秒")
             if _ < num_tests - 1:
                 time.sleep(interval)
         average_delay = sum(delays) / num_tests
@@ -351,7 +335,7 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def measure_dns_delay_ipv6(self, num_tests: int = 10, interval: int = 5) -> float:
+    def measure_dns_delay_ipv6(self, num_tests, interval) -> float:
         """
         测量解析指定域名到IPv6地址的平均时延。
 
@@ -364,7 +348,7 @@ class IPv6SupportDegree:
         for _ in range(num_tests):
             start_time = time.time()
             # 解析域名，指定IPv6地址族
-            socket.getaddrinfo(get_Hostname(self.ip_address), None, family=socket.AF_INET6)
+            socket.getaddrinfo(self.domain, None, family=socket.AF_INET6)
             end_time = time.time()
             delay = end_time - start_time
             delays.append(delay)
@@ -387,7 +371,7 @@ class IPv6SupportDegree:
     ipv6域名解析时延/ipv4域名解析时延 - 1 <= 0.2
     """
 
-    def check_dns_delay_criteria(self, num_tests: int = 10, interval: int = 5) -> bool:
+    def check_dns_delay_criteria(self, num_tests, interval) -> bool:
         """
         检查IPv6域名解析时延是否满足相对于IPv4增加不超过20%的条件。
 
@@ -397,7 +381,7 @@ class IPv6SupportDegree:
         :return: 布尔值，True表示满足条件，False表示不满足。
         """
         # 测量IPv4解析时延
-        ipv4_delay = self.measure_dns_delay_7(num_tests, interval)
+        ipv4_delay = self.measure_dns_delay(num_tests, interval)
         print(f"IPv4平均解析时延：{ipv4_delay}秒")
 
         # 测量IPv6解析时延
@@ -423,7 +407,7 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def measure_tcp_handshake_delay_ipv4(self, port: int = 80, num_tests: int = 10, interval: int = 5) -> float:
+    def measure_tcp_handshake_delay_ipv4(self, num_tests, interval, port: int = 80) -> float:
         """
         测量IPv4环境下TCP三次握手的平均时延。
 
@@ -437,7 +421,7 @@ class IPv6SupportDegree:
         for _ in range(num_tests):
             try:
                 # 解析域名获取IPv4地址
-                ipv4_addr_info = socket.getaddrinfo(get_Hostname(self.ip_address), port, socket.AF_INET,
+                ipv4_addr_info = socket.getaddrinfo(self.domain, port, socket.AF_INET,
                                                     socket.SOCK_STREAM)
                 ipv4_addr = ipv4_addr_info[0][4][0]  # 获取第一个返回的IPv4地址
                 start_time = time.time()  # 开始尝试连接的时间
@@ -469,7 +453,7 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def measure_tcp_handshake_delay_ipv6(self, port: int = 80, num_tests: int = 10, interval: int = 5) -> float:
+    def measure_tcp_handshake_delay_ipv6(self, num_tests, interval, port: int = 80) -> float:
         """
         测量IPv6环境下TCP三次握手的平均时延。
 
@@ -483,7 +467,7 @@ class IPv6SupportDegree:
         for _ in range(num_tests):
             try:
                 # 解析域名获取IPv6地址
-                ipv6_addr_info = socket.getaddrinfo(get_Hostname(self.ip_address), port, socket.AF_INET6,
+                ipv6_addr_info = socket.getaddrinfo(self.domain, port, socket.AF_INET6,
                                                     socket.SOCK_STREAM)
                 ipv6_addr = ipv6_addr_info[0][4][0]  # 获取第一个返回的IPv6地址
                 start_time = time.time()  # 开始尝试连接的时间
@@ -514,7 +498,7 @@ class IPv6SupportDegree:
     ipv6建立时延/ipv4建立时延 - 1 <= 0.2
     """
 
-    def check_tcp_handshake_delay_criteria(self, port: int = 80, num_tests: int = 10, interval: int = 5) -> bool:
+    def check_tcp_handshake_delay_criteria(self, num_tests, interval, port: int = 80) -> bool:
         """
         检查IPv6 TCP建立时延是否满足相对于IPv4增加不超过20%的条件。
 
@@ -543,7 +527,7 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def calculate_average_ack_delay_ipv4(self, testnum):
+    def calculate_average_ack_delay_ipv4(self, testnum, interval):
         total_delay = 0
         socket.AF_INET6 = False  # 设置IPv4地址
         for i in range(testnum):
@@ -557,10 +541,12 @@ class IPv6SupportDegree:
             print(f"Test {i + 1}: ACK delay = {ack_delay} seconds")
 
             if i != testnum - 1:
-                time.sleep(1)  # 每次测试间隔不大于300秒
+                time.sleep(interval)  # 每次测试间隔不大于300秒
 
         average_delay = total_delay / testnum
         print(f"\nAverage ACK delay = {average_delay} seconds")
+        self.ipv4_ack_delay = average_delay
+        return average_delay
 
     # 14. ipv6环境下服务器响应首包时延
     """
@@ -568,39 +554,61 @@ class IPv6SupportDegree:
     测试至少10次，每次间隔不大于300秒，计算平均时延
     """
 
-    def calculate_average_ack_delay_ipv6(self,  testnum):
+    def calculate_average_ack_delay_ipv6(self, testnum, interval):
         total_delay = 0
-        # 设置IPv6地址
-        socket.AF_INET = None
-        for i in range(testnum):
-            start_time = time.time()
-            response = requests.get(self.ip_address)
-            end_time = time.time()
+        try:
+            # 设置IPv6地址
+            socket.AF_INET = None
+            for i in range(testnum):
+                try:
+                    start_time = time.time()
+                    response = requests.get(self.ip_address)
+                    end_time = time.time()
 
-            ack_delay = end_time - start_time
-            total_delay += ack_delay
+                    ack_delay = end_time - start_time
+                    total_delay += ack_delay
 
-            print(f"Test {i + 1}: ACK delay = {ack_delay} seconds")
+                    print(f"Test {i + 1}: ACK delay = {ack_delay} seconds")
 
-            if i != testnum - 1:
-                time.sleep(1)  # 每次测试间隔不大于300秒
+                    if i != testnum - 1:
+                        time.sleep(interval)  # 每次测试间隔不大于300秒
+
+                except requests.exceptions.RequestException as e:
+                    print(f"RequestException occurred during test {i + 1}: {str(e)}")
+
+        except Exception as e:
+            print(f"Exception occurred: {str(e)}")
 
         average_delay = total_delay / testnum
         print(f"\nAverage ACK delay = {average_delay} seconds")
+        self.ipv6_ack_delay = average_delay
+        return average_delay
 
     # 15. 计算是否满足服务器响应首包时延
     """
     ipv6响应时延/ipv4响应时延 - 1 <= 0.2
     """
 
-    def check_response_delay_ratio(self, delay_ipv6, delay_ipv4):
-        ratio = delay_ipv6 / delay_ipv4 - 1
-        print(f"\n比例 = {ratio}")
+    def check_response_delay_ratio(self, testnum, interval):
+        try:
+            ratio = self.calculate_average_ack_delay_ipv6(testnum, interval) / self.calculate_average_ack_delay_ipv4(
+                testnum, interval) - 1
+            print(f"\n比例 = {ratio}")
 
-        if ratio <= 0.2:
-            return "满足条件"
-        else:
-            return "不满足条件"
+            if ratio <= 0.2:
+                print("满足条件")
+            else:
+                print("不满足条件")
+            self.ack_delay_ratio = ratio
+            return ratio
+
+        except ZeroDivisionError:
+            print("除数为零错误：无法计算比例")
+            return None
+
+        except Exception as e:
+            print(f"异常发生：{str(e)}")
+            return None
 
     # 16. ipv4环境下服务器响应首页时延
     """
@@ -611,45 +619,56 @@ class IPv6SupportDegree:
     # 16.ipv4环境下服务器响应首页时延
     def ipv4delay(self, num_tests, interval):
         def measure_page_load_time(url):
-            options = Options()
-            options.headless = True  # 无头模式，不显示浏览器窗口
-            options.add_argument('--disable-ipv6')  # 禁用 IPv6
-            options.add_argument('--disable-extensions')  # 禁用扩展
-            options.add_argument('--disable-plugins')  # 禁用插件
-            driver = webdriver.Chrome(options=options)
-            # 记录开始时间
-            start_time = time.time()
+            try:
+                chrome_options = webdriver.ChromeOptions()
+                # 2> 添加无头参数r,一定要使用无头模式，不然截不了全页面，只能截到你电脑的高度
+                chrome_options.add_argument('--headless')
+                # # 3> 为了解决一些莫名其妙的问题关闭 GPU 计算
+                chrome_options.add_argument('--disable-gpu')
+                # # 4> 为了解决一些莫名其妙的问题浏览器不动
+                chrome_options.add_argument('--no-sandbox')
+                driver = webdriver.Remote("http://127.0.0.1:4444", options=chrome_options)
 
-            driver.get(url)  # 打开网页
+                # 记录开始时间
+                start_time = time.time()
 
-            # 等待页面加载完成
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
+                driver.get(url)  # 打开网页
 
-            # 等待页面所有资源加载完成
-            WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'img')))
+                # 等待页面加载完成
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
-            # 记录结束时间
-            end_time = time.time()
+                # 等待页面所有资源加载完成
+                WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'img')))
 
-            # 关闭浏览器
-            driver.quit()
+                # 记录结束时间
+                end_time = time.time()
 
-            # 计算页面加载时间
-            load_time = end_time - start_time
-            return load_time
+                # 关闭浏览器
+                driver.quit()
+
+                # 计算页面加载时间
+                load_time = end_time - start_time
+                return load_time
+
+            except Exception as e:
+                print(f"异常发生：{str(e)}")
+                return None
 
         # 进行多次测试
         total_load_time = 0
         for i in range(num_tests):
             load_time = measure_page_load_time(self.ip_address)
-            total_load_time += load_time
-            print(f"第 {i + 1} 次测试：{load_time} 秒")
+            if load_time is not None:
+                total_load_time += load_time
+                print(f"第 {i + 1} 次测试：{load_time} 秒")
             if i < num_tests - 1:
                 time.sleep(interval)
 
         # 计算平均加载时间
         average_load_time = total_load_time / num_tests
         print(f"\n平均加载时间：{average_load_time} 秒")
+        self.ipv4_delay = average_load_time
+        return average_load_time
 
     # 17. ipv6环境下服务器响应首页时延
     """
@@ -659,64 +678,93 @@ class IPv6SupportDegree:
 
     def ipv6delay(self, num_tests, interval):
         def measure_page_load_time(url):
-            options = Options()
-            options.headless = True  # 无头模式，不显示浏览器窗口
+            try:
+                chrome_options = Options()
+                chrome_options.add_argument('--headless')
+                # # 3> 为了解决一些莫名其妙的问题关闭 GPU 计算
+                chrome_options.add_argument('--disable-gpu')
+                # # 4> 为了解决一些莫名其妙的问题浏览器不动
+                chrome_options.add_argument('--no-sandbox')
+                service = Service(executable_path='/usr/bin/chromedriver')
+                driver = webdriver.Chrome(service=service, options=chrome_options)
+                # 记录开始时间
+                start_time = time.time()
 
-            driver = webdriver.Chrome(options=options)
-            # 记录开始时间
-            start_time = time.time()
+                driver.get(url)  # 打开网页
 
-            driver.get(url)  # 打开网页
+                # 等待页面加载完成
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
-            # 等待页面加载完成
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
+                # 等待页面所有资源加载完成
+                WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'img')))
 
-            # 等待页面所有资源加载完成
-            WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'img')))
+                # 记录结束时间
+                end_time = time.time()
 
-            # 记录结束时间
-            end_time = time.time()
+                # 关闭浏览器
+                driver.quit()
 
-            # 关闭浏览器
-            driver.quit()
+                # 计算页面加载时间
+                load_time = end_time - start_time
+                return load_time
 
-            # 计算页面加载时间
-            load_time = end_time - start_time
-            return load_time
+            except Exception as e:
+                print(f"异常发生：{str(e)}")
+                return None
 
         # 进行多次测试
         total_load_time = 0
         for i in range(num_tests):
             load_time = measure_page_load_time(self.ip_address)
-            total_load_time += load_time
-            print(f"第 {i + 1} 次测试：{load_time} 秒")
+            if load_time is not None:
+                total_load_time += load_time
+                print(f"第 {i + 1} 次测试：{load_time} 秒")
             if i < num_tests - 1:
                 time.sleep(interval)
 
         # 计算平均加载时间
         average_load_time = total_load_time / num_tests
         print(f"\n平均加载时间：{average_load_time} 秒")
+        self.ipv6_delay = average_load_time
+        return average_load_time
 
     # 18. 计算是否满足服务器响应首页时延
     """
     ipv6首页时延/ipv4首页时延 - 1 <= 0.2
     """
 
-    def check_homepage_delay(self, ipv6delay1, ipv4delay1):
-        ratio = (ipv6delay1 / ipv4delay1) - 1
+    def check_homepage_delay(self, test_num, interval):
+        try:
+            ratio = (self.ipv6delay(test_num, interval) / self.ipv4delay(test_num, interval)) - 1
 
-        if ratio <= 0.2:
-            return "满足服务器响应首页时延条件"
-        else:
-            return "不满足服务器响应首页时延条件"
+            if ratio <= 0.2:
+                print("满足服务器响应首页时延条件")
+            else:
+                print("不满足服务器响应首页时延条件")
+            self.delay_ratio = ratio
+            return ratio
+
+        except ZeroDivisionError:
+            print("除数为零错误：无法计算比例")
+            return None
+
+        except Exception as e:
+            print(f"异常发生：{str(e)}")
+            return None
 
     # 19. ipv4和ipv6环境下，页面截图之间的相似性
     """
     根据ipv4和ipv6环境下的网页截图，计算图片相似度。
     """
 
-    def calc_image_similarity(self, ipv4_image, ipv6_image):
-        self.image_similarity = image_similarity(ipv4_image, ipv6_image)
+    def calc_image_similarity(self):
+        ipv4Img = "IPv4/ipv4." + self.domain + ".png"
+        ipv6Img = "IPv6/ipv6." + self.domain + ".png"
+        if os.path.exists(ipv4Img) and os.path.exists(ipv6Img):
+            pic_similarity = image_similarity(ipv4Img, ipv6Img)
+        else:
+            pic_similarity = 0
+        self.image_similarity = pic_similarity
 
     # 20. ipv4和ipv6环境下，页面文本内容的相似性
     """
@@ -724,19 +772,32 @@ class IPv6SupportDegree:
     也可分别计算网站网页正文，网站标题等等不同区域的文本相似度，并加权获得最终的文本相似度
     """
 
-    def calc_text_similarity(self):
-        self.text_similarity = get_webpage_similarity(self.ip_address)
+    def calc_text_similarity(self, conn: pymysql.connections.Connection):
+        text_similarity = 0
+        cursor = conn.cursor()
+        query_sql = "SELECT ipv4_source_code,ipv6_source_code FROM website_information WHERE domain = %s"
+        cursor.execute(query_sql, self.domain)
+        result = cursor.fetchall()
+        for tuple_element in result:
+            if tuple_element[0] and tuple_element[1]:
+                text_similarity = calculate_sourcecode_similarity(tuple_element[0], tuple_element[1])
+        self.text_similarity = text_similarity
 
     # 21. ipv4和ipv6环境下，页面结构的相似性
     """
     分别从ipv4网页源代码和ipv6网页源代码中提取所有HTML标签与出现频率，构造词频向量，计算相似度
     """
 
-    def calc_struct_similarity_html(self):
-        information = Information(self.ip_address)
-        ipv4_text = information.get_ipv4_code()
-        ipv6_text = information.get_ipv6_code()
-        self.structure_similarity = structure_similarity(ipv4_text, ipv6_text)
+    def calc_text_structure_similarity(self, conn: pymysql.connections.Connection):
+        cursor = conn.cursor()
+        query_sql = "SELECT ipv4_source_code,ipv6_source_code FROM website_information WHERE domain = %s"
+        cursor.execute(query_sql, self.domain)
+        result = cursor.fetchall()
+        text_structure_similarity = 0
+        for tuple_element in result:
+            if tuple_element[0] and tuple_element[1]:
+                text_structure_similarity = structure_similarity(tuple_element[0], tuple_element[1])
+        self.structure_similarity = text_structure_similarity
 
     # 22. ipv6域名授权体系
     """
@@ -745,36 +806,55 @@ class IPv6SupportDegree:
     """
 
     def calc_ipv6_authorization(self):
-        ip_address = get_Hostname(self.ip_address)
-        # print(ip_address)
+        # print(domain)
         if sys.platform.startswith("win"):
-            cmd = ['dig', ip_address, 'AAAA', '+trace']
+            cmd = ['dig', self.domain, 'AAAA', '+trace']
         else:
-            cmd = ['dig', ip_address, '-6', 'AAAA', '+trace']
+            cmd = ['dig', self.domain, '-6', 'AAAA', '+trace']
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result = ""
         # 获取实时输出
         for line in iter(p.stdout.readline, b''):
             temp = line.decode('utf-8').strip()
             # print(temp)
-            if temp.find(ip_address) != -1:
+            if temp.find(self.domain) != -1:
                 result = temp
         # 等待命令执行完成
         p.wait()
         print(result)
         if result.find("AAAA") != -1:
-            self.ipv6_authorization = True
-            print("True")
+            self.ipv6_authorization = 1
+            print("authorization True")
         else:
-            print("False")
-
-    # 23. pmtu能力
-    """
-    向网站发送icmpv6 type 2的错误消息报文，mtu = 1280
-    判断网站是否协商TCP MSS分段大小
-    """
+            self.ipv6_authorization = 0
+            print("authorization False")
 
     # 24. ipv6支持度计算
     """
     根据前面的计算结果，加权计算最终的ipv6支持度
     """
+
+    def calc_ipv6(self, conn: pymysql.connections.Connection, test_num=10, interval=5):
+        self.test_ipv6_resolution()
+        self.test_ipv6_server()
+        self.check_dual_stack_support()
+        self.calc_ipv6_authorization()
+        self.test_ipv6_sub_connectivity()
+        self.test_ipv6_third_connectivity()
+        self.calc_image_similarity()
+        self.calc_text_structure_similarity(conn)
+        self.calc_text_similarity(conn)
+        self.check_tcp_handshake_delay_criteria(test_num, interval)
+        self.check_response_delay_ratio(test_num, interval)
+        self.check_homepage_delay(test_num, interval)
+        self.check_dns_delay_criteria(test_num, interval)
+
+        # 24小时
+        # self.test_ipv6_connectivity_dns(15, ['2001:4860:4860::8888', '2620:0:ccc::2', '2620:0:ccd::2'], 300)
+        # self.test_ipv6_stablity()
+        self.support_degree = (
+                                      self.ipv6_resolution + self.ipv6_http_server + self.ipv6_https_server + self.dual_stack + self.ipv6_connectivity +
+                                      self.ipv6_sub_connectivity + self.ipv6_third_connectivity + self.ipv6_stablity +
+                                      self.ipv6_authorization + 1 - self.dns_delay_ratio + 1 - self.tcp_delay_ratio +
+                                      1 - self.ack_delay_ratio + 1 - self.delay_ratio + self.text_similarity +
+                                      self.image_similarity + self.structure_similarity) / 16.0 * 100

@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import re
 
 import pymysql
@@ -5,7 +6,7 @@ import pymysql
 # 1. 这里是数据库超参数
 host = 'localhost'  # mysql地址,填写域名或者ip地址
 database_user = "root"  # mysql 用户名
-database_passwd = "180380zj"  # mysql 密码
+database_passwd = "root"  # mysql 密码
 database = "ipv6test"  # 需要连接的数据库
 
 

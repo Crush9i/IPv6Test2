@@ -1,11 +1,45 @@
+# -*- coding: UTF-8 -*-
 import base64
 import json
 from datetime import datetime
+from urllib.parse import urlparse
 
 import pymysql.connections
 
-from similarity.textSimilarity import  calculate_sourcecode_similarity
+from similarity.textSimilarity import calculate_sourcecode_similarity
+
+
 # import ConnectDB as connDB
+def init_website_information(conn: pymysql.connections.Connection, domain='www.google.com'):
+    """
+        :param conn: MySQL 连接对象。
+        :param domain: 网站域名。
+        """
+    if domain.startswith("http:"):
+        domain = urlparse(domain).hostname
+    print("mysql")
+    print(domain)
+
+    sql = "INSERT INTO website_information(domain) VALUES (%s)"
+
+    # # 对于相应的参数进行格式转换
+    # collection_task_start_time = datetime.strptime(collection_task_start_time, '%Y-%m-%d %H:%M:%S')
+    # print(collection_task_start_time)
+    # collection_task_end_time = datetime.strptime(collection_task_end_time, '%Y-%m-%d %H:%M:%S')
+
+    # 在进入插入之前先进行查询，如果存在相应的结果，那么进行更新，如果不存在相应的结果，那么进行插入操作
+    print("query")
+    result = query_website_information(conn, domain)
+    print(result)
+    if result is None:
+        cursor = conn.cursor()
+        cursor.execute(sql, domain)
+        cursor.close()
+        conn.commit()
+        print("完成插入!")
+    else:
+        print(result)
+        print("已存在")
 
 
 def insert_website_information(conn: pymysql.connections.Connection, domain='www.google.com',
@@ -30,10 +64,10 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
         :param secondary_links: 二级链接，格式为 list，这里会转换成JSON类型存储到数据库中。
         :param tertiary_links:  三级链接，格式为 list。
         """
-    sql = """INSERT INTO website_information(domain, collection_task_start_time, collection_task_end_time,
-                                            ipv4_addr, ipv6_addr, ipv4_source_code, ipv6_source_code, ipv4_page_pic,
-                                            ipv6_page_pic, secondary_links, tertiary_links)
-                                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    if domain.startswith("http:"):
+        domain = urlparse(domain).hostname
+    print("mysql insert")
+    print(domain)
 
     # # 对于相应的参数进行格式转换
     # collection_task_start_time = datetime.strptime(collection_task_start_time, '%Y-%m-%d %H:%M:%S')
@@ -43,20 +77,35 @@ def insert_website_information(conn: pymysql.connections.Connection, domain='www
     # 在进入插入之前先进行查询，如果存在相应的结果，那么进行更新，如果不存在相应的结果，那么进行插入操作
 
     result = query_website_information(conn, domain)
+    print(result)
+    if ipv4_page_pic is not None:
+        ipv4_page_pic = base64.b64decode(ipv4_page_pic)
+    if ipv6_page_pic is not None:
+        ipv4_page_pic = base64.b64decode(ipv6_page_pic)
+    if secondary_links is not None:
+        secondary_links = json.dumps({"secondary_links": secondary_links})
+    if tertiary_links is not None:
+        tertiary_links = json.dumps({"tertiary_links": tertiary_links})
+    if ipv4_addr is not None:
+        ipv4_addr = json.dumps({"ipv4_addr": ipv4_addr})
+    if ipv6_addr is not None:
+        ipv6_addr = json.dumps({"ipv6_addr": ipv6_addr})
     if result is not None:
-        update_website_information(conn, domain, collection_task_start_time, collection_task_end_time,
-                                   ipv4_addr, ipv6_addr, ipv4_source_code, ipv6_source_code, ipv4_page_pic,
-                                   ipv6_page_pic, secondary_links, tertiary_links)
+        sql = """UPDATE website_information SET collection_task_start_time = %s, collection_task_end_time = %s, 
+                ipv4_addr = %s, ipv6_addr = %s,ipv4_source_code = %s, ipv6_source_code = %s, ipv4_page_pic = %s, 
+                ipv6_page_pic =%s, secondary_links = %s, tertiary_links =%s WHERE domain = %s"""
+        data_tuple = (collection_task_start_time, collection_task_end_time, ipv4_addr, ipv6_addr, ipv4_source_code,
+                      ipv6_source_code, ipv4_page_pic, ipv6_page_pic, secondary_links, tertiary_links, domain)
+        cursor = conn.cursor()
+        cursor.execute(sql, data_tuple)
+        cursor.close()
+        conn.commit()
         print("完成更新!!")
     else:
-        ipv4_page_pic = base64.b64decode(ipv4_page_pic)
-        ipv6_page_pic = base64.b64decode(ipv6_page_pic)
-
-        secondary_links = json.dumps({"secondary_links": secondary_links})
-        tertiary_links = json.dumps({"tertiary_links": tertiary_links})
-
-        ipv4_addr = json.dumps({"ipv4_addr": ipv4_addr})
-        ipv6_addr = json.dumps({"ipv6_addr": ipv6_addr})
+        sql = """INSERT INTO website_information(domain, collection_task_start_time, collection_task_end_time,
+                                                ipv4_addr, ipv6_addr, ipv4_source_code, ipv6_source_code, ipv4_page_pic,
+                                                ipv6_page_pic, secondary_links, tertiary_links)
+                                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
         # 执行sql语句
         data_tuple = (
             domain, collection_task_start_time, collection_task_end_time, ipv4_addr, ipv6_addr, ipv4_source_code,
@@ -78,9 +127,10 @@ def query_website_information(conn: pymysql.connections.Connection, domain='www.
     """
     cursor = conn.cursor()
     sql = "SELECT * FROM website_information WHERE domain = %s"  # 没有直接传递参数，防止sql注入攻击
+    print(sql)
     cursor.execute(sql, domain)
     result = cursor.fetchall()
-    # print(result)
+    print(result)
     cursor.close()
     if len(result) == 0:
         return None
@@ -179,11 +229,13 @@ def update_website_information(conn: pymysql.connections.Connection, domain='www
     :param tertiary_links:
     :return:
     """
+
     sql = """UPDATE website_information SET collection_task_start_time = %s, collection_task_end_time = %s, 
             ipv4_addr = %s, ipv6_addr = %s,ipv4_source_code = %s, ipv6_source_code = %s, ipv4_page_pic = %s, 
             ipv6_page_pic =%s, secondary_links = %s, tertiary_links =%s WHERE domain = %s"""
     data_tuple = (collection_task_start_time, collection_task_end_time, ipv4_addr, ipv6_addr, ipv4_source_code,
                   ipv6_source_code, ipv4_page_pic, ipv6_page_pic, secondary_links, tertiary_links, domain)
+    # print(data_tuple)
     cursor = conn.cursor()
     cursor.execute(sql, data_tuple)
     cursor.close()

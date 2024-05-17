@@ -2,19 +2,25 @@
 from urllib.parse import urlparse, urljoin
 import urllib3
 from chardet import UniversalDetector
+from requests.adapters import HTTPAdapter
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import time
 from bs4 import BeautifulSoup
 import socket
 import requests
-import chardet
-import ssl
-
-# urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+from fake_useragent import UserAgent
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 urllib3.disable_warnings()
+s = requests.Session()
+s.mount('http://', HTTPAdapter(max_retries=3))  # 访问http协议时，设置重传请求最多三次
+s.mount('https://', HTTPAdapter(max_retries=3))  # 访问https协议时，设置重传请求最多三次
+s.keep_alive = False
+ua = UserAgent()
 
 headers = {
+    "User-Agent": ua.random,
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     "accept-encoding": "gzip, deflate, br",
     "accept-language": "zh-CN,zh;q=0.9",
@@ -73,8 +79,9 @@ def get_links(ip_address):
 
 
 class Information:
-    def __init__(self, ip_address):
-        self.ip_address = ip_address
+    def __init__(self, domain):
+        self.domain = domain
+        self.url = "https://" + domain
         self.supportIPv4 = False
         self.supportIPv6 = False
         self.secondary_links = []
@@ -88,15 +95,12 @@ class Information:
     # 1. 判断网站是否支持ipv4，获取ipv4地址
     # 2. 判断网站是否支持ipv6，获取ipv6地址
     def get_address(self, useIPv6=False):
-        print("start address")
         address_list = []
         try:
-            # 解析出url的域名
-            domain = urlparse(self.ip_address).hostname
             if useIPv6:
-                addresses = socket.getaddrinfo(domain, None, socket.AF_INET6)
+                addresses = socket.getaddrinfo(self.domain, None, socket.AF_INET6)
             else:
-                addresses = socket.getaddrinfo(domain, None, socket.AF_INET)
+                addresses = socket.getaddrinfo(self.domain, None, socket.AF_INET)
             for address in addresses:
                 address_list.append(address[4][0])
         # 如果出现异常，说明不支持ipv6
@@ -104,45 +108,17 @@ class Information:
             pass
         if useIPv6:
             if not address_list:
-                print(f"{self.ip_address}不支持ipv6访问，不支持解析AAAA地址。")
+                print(f"{self.domain}不支持ipv6访问，不支持解析AAAA地址。")
             else:
                 self.supportIPv6 = True
                 self.ipv6_address = address_list
         else:
             if not address_list:
-                print(f"{self.ip_address}不支持ipv4访问，不支持解析A地址。")
+                print(f"{self.domain}不支持ipv4访问，不支持解析A地址。")
             else:
                 self.supportIPv4 = True
                 self.ipv4_address = address_list
         return address_list
-
-    # # 3. 在ipv4环境下，获取网页源代码
-    # def get_ipv4_code(self):
-    #     requests.packages.urllib3.util.connection.allowed_gai_family = ipv4_family
-    #     try:
-    #         r = requests.get(self.ip_address, verify=False, headers=headers)
-    #         r.encoding = chardet.detect(r.content)['encoding']
-    #         self.ipv4_code = r.text
-    #         r.close()
-    #         with open('source_ipv4.txt', 'w', encoding='utf-8') as f:
-    #             f.write(self.ipv4_code)
-    #     except Exception as e:
-    #         print(e)
-    #     return self.ipv4_code
-    #
-    # # 4. 在ipv6环境下，获取网页源代码
-    # def get_ipv6_code(self):
-    #     requests.packages.urllib3.util.connection.allowed_gai_family = ipv6_family
-    #     try:
-    #         r = requests.get(self.ip_address, verify=False, headers=headers)
-    #         r.encoding = chardet.detect(r.content)['encoding']
-    #         self.ipv6_code = r.text
-    #         r.close()
-    #         with open('source_ipv6.txt', 'w', encoding='utf-8') as f:
-    #             f.write(self.ipv6_code)
-    #     except Exception as e:
-    #         print(e)
-    #     return self.ipv6_code
 
     def get_web_code(self, useIPv6=False):
         print("start web code")
@@ -152,48 +128,29 @@ class Information:
             requests.packages.urllib3.util.connection.allowed_gai_family = ipv4_family
         web_code = ""
         try:
-            r = requests.get(self.ip_address, verify=False, headers=headers)
+            print(self.url)
+            r = requests.get(self.url, verify=False, headers=headers)
+            print(r.status_code)
+            # print(r.encoding)
             detector = UniversalDetector()
             for line in r.iter_lines():
                 detector.feed(line)
                 if detector.done:
                     break
             encoding = detector.result['encoding']
+            print(encoding)
             r.encoding = encoding
-            data = r.content
-            result = data
-            # # 初始化一个新的字节串来存储结果
-            # result = b''
-            # # 遍历原始字节串
-            # i = 0
-            # while i < len(data):
-            #     # 检查当前字节是否以\xee开头
-            #     if data[i:i + 1] == b'\xee':
-            #         # 尝试查找整个序列的长度（这里假设是3个字节，根据实际情况调整）
-            #         sequence_length = 3
-            #         if i + sequence_length <= len(data):
-            #             # 跳过整个序列
-            #             i += sequence_length
-            #     else:
-            #         # 如果不是以\xee开头，将当前字节添加到结果中
-            #         result += data[i:i + 1]
-            #         i += 1
-            html_string = result.decode(encoding, 'ignore')
-            html_utf8_bytes = html_string.encode('utf-8')
-            html_utf8_string = html_utf8_bytes.decode('utf-8')
-            print(detector.result)
-            detector.close()
-            # print(r.content)
-            # # 如果不是UTF-8，则解码为字符串并重新编码为UTF-8
-            # if encoding != 'utf-8':
-            #     html_string = r.content.decode(encoding, 'ignore')
-            #     html_utf8_bytes = html_string.encode('utf-8')
-            #     html_utf8_string = html_utf8_bytes.decode('utf-8')
-            # else:
-            #     html_utf8_string = r.text
-            web_code = html_utf8_string
-            print(web_code)
+            # data = r.content
+            # result = data
+            # html_string = result.decode(encoding, 'ignore')
+            # html_utf8_bytes = html_string.encode('utf-8')
+            # html_utf8_string = html_utf8_bytes.decode('utf-8')
+            # detector.close()
+            # web_code = html_utf8_string
+            web_code = r.content.decode(encoding)
+            # web_code = r.text
             r.close()
+            # print(web_code)
             if useIPv6:
                 self.ipv6_code = web_code
                 with open('source_ipv6.txt', 'w', encoding='utf-8') as f:
@@ -209,25 +166,31 @@ class Information:
     # 5. 获取ipv4环境下网站截图 注：需要在单栈ipv4网络环境下运行
     def get_pic(self, path, useIPv6=False):
         print("start pic")
-        # 1> 获取chrome参数对象
-        chrome_options = webdriver.ChromeOptions()
-        # 2> 添加无头参数r,一定要使用无头模式，不然截不了全页面，只能截到你电脑的高度
-        chrome_options.add_argument('--headless')
-        # # 3> 为了解决一些莫名其妙的问题关闭 GPU 计算
-        chrome_options.add_argument('--disable-gpu')
-        # # 4> 为了解决一些莫名其妙的问题浏览器不动
-        chrome_options.add_argument('--no-sandbox')
-        # chrome_options.add_argument('--headless=new')
         try:
             if useIPv6:
-                driver = webdriver.Remote("http://202.199.13.109:5555", options=chrome_options)
+                chrome_options = Options()
+                chrome_options.add_argument('--headless')
+                # # 3> 为了解决一些莫名其妙的问题关闭 GPU 计算
+                chrome_options.add_argument('--disable-gpu')
+                # # 4> 为了解决一些莫名其妙的问题浏览器不动
+                chrome_options.add_argument('--no-sandbox')
+                service = Service(executable_path='/usr/bin/chromedriver')
+                driver = webdriver.Chrome(service=service, options=chrome_options)
+               # driver = webdriver.Chrome(options=chrome_options)
             else:
-                driver = webdriver.Remote("http://202.199.13.109:4444", options=chrome_options)
+                # 1> 获取chrome参数对象
+                chrome_options = webdriver.ChromeOptions()
+                # 2> 添加无头参数r,一定要使用无头模式，不然截不了全页面，只能截到你电脑的高度
+                chrome_options.add_argument('--headless')
+                # # 3> 为了解决一些莫名其妙的问题关闭 GPU 计算
+                chrome_options.add_argument('--disable-gpu')
+                # # 4> 为了解决一些莫名其妙的问题浏览器不动
+                chrome_options.add_argument('--no-sandbox')
+                driver = webdriver.Remote("http://127.0.0.1:4444", options=chrome_options)
             try:
-                # 模拟人滚动滚动条,处理图片懒加载问题
-                driver.get(self.ip_address)
-                driver.implicitly_wait(30)  # 隐式等待页面加载
-                time.sleep(1)
+                driver.get(self.url)
+                driver.set_page_load_timeout(3)
+                print('finish load ....')
                 k = 1
                 js_height = "return document.body.scrollHeight"
                 height = driver.execute_script(js_height)
@@ -263,24 +226,24 @@ class Information:
                 print(width, height)
                 # 将浏览器的宽高设置成刚刚获取的宽高
                 driver.set_window_size(width, height)
-                domain = urlparse(self.ip_address).hostname
                 if useIPv6:
-                    png_path = path + '{}.png'.format('ipv6.' + domain)
+                    png_path = path + '/IPv6/{}.png'.format('ipv6.' +self.domain)
                 else:
-                    png_path = path + '{}.png'.format('ipv4.' + domain)
+                    png_path = path + '/IPv4/{}.png'.format('ipv4.' +self.domain)
                 # 截图并关掉浏览器
                 print(png_path)
                 driver.save_screenshot(png_path)
-            except Exception as e:
-                print(e)
-            driver.close()
-            driver.quit()
+            except Exception:
+                driver.execute_script('window.stop()')
+                print(driver.title)
+            finally:
+                driver.quit()
         except Exception as e:
             print(e)
 
     # 7. 从网页源代码中提取二级链接
     def get_secondary_links(self):
-        self.secondary_links = get_links(self.ip_address)
+        self.secondary_links = get_links(self.url)
         return self.secondary_links
 
     # 8. 从网页源代码中提取三级链接

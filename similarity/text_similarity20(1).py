@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import re
 import ssl
 from bs4 import BeautifulSoup
@@ -47,8 +48,8 @@ def get_text(response):
 
 # 获得网页内容
 def fetch_webpage_content(url, use_ipv6=False,access=True):
-    # ip_address = get_ipv6_address() if use_ipv6 else get_ipv4_address()
-    # print(f"Using {'IPv6' if use_ipv6 else 'IPv4'} address: {ip_address}")
+    # domain = get_ipv6_address() if use_ipv6 else get_ipv4_address()
+    # print(f"Using {'IPv6' if use_ipv6 else 'IPv4'} address: {domain}")
     parsed_url = urlparse(url)
     path=parsed_url.path
     scheme = parsed_url.scheme
@@ -129,9 +130,9 @@ def calculate_similarity(ipv4_text, ipv6_text):
     return similarity
 
 
-''' 20. ipv4和ipv6环境下，页面文本内容的相似性:get_webpage_similarity(url) '''
+''' 20. ipv4和ipv6环境下，页面文本内容的相似性:get_webpage_similarity(domain) '''
 '''
-输入：url——网址
+输入：domain——网址
 输出：IPV4和IPV6访问页面内容相似度——100.00%
 '''
 def get_webpage_similarity(url):
@@ -155,5 +156,5 @@ def get_webpage_similarity(url):
 
 
 # if __name__ == '__main__':
-#     url = "https://www.ucas.edu.cn/"#https://www.pumc.edu.cn/ IPV6可访问但是[WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
-#     get_webpage_similarity(url)
+#     domain = "https://www.ucas.edu.cn/"#https://www.pumc.edu.cn/ IPV6可访问但是[WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+#     get_webpage_similarity(domain)

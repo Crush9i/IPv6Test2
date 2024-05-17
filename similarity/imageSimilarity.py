@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from selenium import webdriver
 from PIL import Image
 import numpy as np

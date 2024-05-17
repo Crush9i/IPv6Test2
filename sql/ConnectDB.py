@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import pymysql
 
 # 1. 这里是数据库超参数
